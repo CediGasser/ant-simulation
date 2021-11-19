@@ -1,3 +1,7 @@
-FROM nginx
+FROM node:alpine as builder
+COPY . .
+RUN npm install
 RUN npm run build
-COPY ./build/_app /etc/nginx/html
+
+FROM nginx
+COPY --from=builder ./build/_app /etc/nginx/html
