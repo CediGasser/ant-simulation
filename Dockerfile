@@ -1,5 +1,5 @@
 FROM node:alpine as builder
-COPY . .
+COPY ./ ./
 RUN npm install
 RUN npm run build
 
