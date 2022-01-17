@@ -1,7 +1,7 @@
 <script>
-    import Slider from "../components/Slider.svelte";
     import Simulation from "../components/Simulation.svelte"
-    
+    import PerformanceMeter from "../components/PerformanceMeter.svelte"
+
     let antCount = 100
     let antSize = 1
     let playing = false
@@ -18,6 +18,7 @@
                 Play
             {/if}
         </button>
+        <PerformanceMeter></PerformanceMeter>
     </div>
 </main>
 
@@ -25,11 +26,19 @@
     @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
     * {
         font-family: Nunito, Roboto, system-ui, sans-serif;
+        color: #D9CB6B;
     }
     main {
         display: flex;
         padding: 24px;
-        color: #D9CB6B;
         background-color: #0F111A;
+    }
+    button, input {
+        background-color: brown;
+        width: 80px;
+        border-radius: 4px;
+        border: none;
+        box-shadow: 4px 4px 8px black;
+        margin: 8px; 
     }
 </style>

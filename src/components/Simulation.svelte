@@ -17,7 +17,7 @@
         if (playing) two.play()
         else two.pause()
     }
-
+    
     $: if (two) {
         if (ants.length === 0) {
             for (let i = 0; i < antCount; i++) {
@@ -26,7 +26,7 @@
                 newAnt.noStroke()
                 ants.push(newAnt)
             }
-        }
+        } 
         else if (ants.length > 0) {
             let diff = ants.length - antCount
             if (diff > 0) {
