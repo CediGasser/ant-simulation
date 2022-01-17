@@ -10,11 +10,11 @@
     // external
     let antCount: number = 100
     let antSize: number = 5
-    let running: boolean = false
-    export {antCount, antSize, running}
+    let playing: boolean = false
+    export {antCount, antSize, playing}
 
     $: if (two) {
-        if (running) two.play()
+        if (playing) two.play()
         else two.pause()
     }
 

@@ -4,19 +4,15 @@
     
     let antCount = 100
     let antSize = 1
-    let running = false
-
-    let changeRunning = () => {
-        running = !running
-    }
+    let playing = false
 </script>
 
 <main>
     <div>
-        <Simulation {antCount} {antSize} {running}></Simulation>
+        <Simulation {antCount} {antSize} {playing}></Simulation>
         <input type="number" bind:value={antCount} max="20000" min="0"/>
-        <button on:click={changeRunning}>
-            {#if running}
+        <button on:click={()=>{playing = !playing}}>
+            {#if playing}
                 Pause
             {:else}
                 Play
