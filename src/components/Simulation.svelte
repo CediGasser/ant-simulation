@@ -9,7 +9,7 @@
 
     // external
     let antCount: number = 100
-    let antSize: number = 5
+    let antSize: number = 1
     let playing: boolean = false
     export {antCount, antSize, playing}
 
@@ -26,7 +26,7 @@
                 newAnt.noStroke()
                 ants.push(newAnt)
             }
-        } 
+        }
         else if (ants.length > 0) {
             let diff = ants.length - antCount
             if (diff > 0) {
