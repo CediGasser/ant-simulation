@@ -8,16 +8,18 @@
     let ants = []
 
     // external
-    let antCount = 100
-    let antSize = 5
-    export {antCount, antSize}
+    let antCount: number = 100
+    let antSize: number = 5
+    let running: boolean = false
+    export {antCount, antSize, running}
 
-    $: {
-        console.log("triggered")
-        if (!two) {
+    $: if (two) {
+        if (running) two.play()
+        else two.pause()
+    }
 
-        }
-        else if (ants.length === 0) {
+    $: if (two) {
+        if (ants.length === 0) {
             for (let i = 0; i < antCount; i++) {
                 let newAnt = two.makeCircle(getRandTo(two.width), getRandTo(two.width), antSize)
                 newAnt.fill = 'rgb(255, 255, 255)'

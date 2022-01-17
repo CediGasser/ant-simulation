@@ -4,13 +4,24 @@
     
     let antCount = 100
     let antSize = 1
+    let running = false
+
+    let changeRunning = () => {
+        running = !running
+    }
 </script>
 
 <main>
     <div>
-        <Simulation {antCount} {antSize}></Simulation>
+        <Simulation {antCount} {antSize} {running}></Simulation>
         <input type="number" bind:value={antCount} max="20000" min="0"/>
-        <Slider></Slider>
+        <button on:click={changeRunning}>
+            {#if running}
+                Pause
+            {:else}
+                Play
+            {/if}
+        </button>
     </div>
 </main>
 
