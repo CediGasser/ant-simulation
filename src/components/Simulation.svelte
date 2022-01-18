@@ -1,23 +1,24 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-    import Two from 'two.js'
+    import * as TwoCL from 'two.js'
+    import TwoNS from 'two.js'
 
     // internal
     let twoDiv: HTMLElement
-    let two
+    let two: TwoCL
     let ants = []
 
     // external
-    let antCount: number = 100
-    let antSize: number = 1
-    let playing: boolean = false
+    let antCount = 100
+    let antSize = 1
+    let playing = false
     export {antCount, antSize, playing}
 
     $: if (two) {
         if (playing) two.play()
         else two.pause()
     }
-    
+
     $: if (two) {
         if (ants.length === 0) {
             for (let i = 0; i < antCount; i++) {
@@ -45,6 +46,8 @@
         }
     }
 
+
+
     let getRandTo = (max: number) => {
         return Math.random() * max
     }
@@ -56,15 +59,16 @@
         }
     }
 
-    onMount(() => {
-        two = new Two({
+    onMount(async () => {
+        two = new TwoNS({
             width: 640,
             height: 640,
-            type: Two.Types.webgl
+            type: TwoNS.Types.webgl
         }).appendTo(twoDiv)
 
         two.bind('update', update)
         two.play()
+
     })
 </script>
 
