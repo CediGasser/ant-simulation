@@ -4,13 +4,13 @@
 
     // internal
     let twoDiv: HTMLElement
-    let two
+    let two: Two
     let ants = []
-
+    Two.make
     // external
-    let antCount: number = 100
-    let antSize: number = 1
-    let playing: boolean = false
+    let antCount = 100
+    let antSize = 1
+    let playing = false
     export {antCount, antSize, playing}
 
     $: if (two) {
