@@ -1,11 +1,10 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-    import * as TwoCL from 'two.js'
-    import TwoNS from 'two.js'
+    import Two from 'two.js'
 
     // internal
     let twoDiv: HTMLElement
-    let two: TwoCL
+    let two: Two
     let ants = []
 
     // external
@@ -58,10 +57,10 @@
     }
 
     onMount(async () => {
-        two = new TwoNS({
+        two = new Two({
             width: 640,
             height: 640,
-            type: TwoNS.Types.webgl
+            type: Two.Types.webgl
         }).appendTo(twoDiv)
 
         two.bind('update', update)
