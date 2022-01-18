@@ -46,8 +46,6 @@
         }
     }
 
-
-
     let getRandTo = (max: number) => {
         return Math.random() * max
     }
@@ -68,7 +66,6 @@
 
         two.bind('update', update)
         two.play()
-
     })
 </script>
 
