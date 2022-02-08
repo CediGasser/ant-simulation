@@ -20,4 +20,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         passphrase: ${{ secrets.PASSPHRASE }}
-        script: bash /var/docker/ants.cedricgasser.com/rebuild.sh
+        script: bash /home/cedric/docker/ants.cedricgasser.com/rebuild.sh
