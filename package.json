@@ -29,6 +29,7 @@
   "type": "module",
   "dependencies": {
     "@types/two.js": "^0.7.5",
+    "pixi.js": "^6.3.0",
     "two.js": "^0.8.0"
   }
 }
