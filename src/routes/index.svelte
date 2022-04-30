@@ -13,7 +13,7 @@
 <main>
     <div>
         <h1>Ant Simulation</h1>
-        <PixiSimulation {antCount} {antSize} {playing}></PixiSimulation>
+        <PixiSimulation {antCount} {antSize} {playing}/>
         <input type="number" bind:value={antCount} max="20000" min="0"/>
         <button on:click={()=>{playing = !playing}}>
             {#if playing}
@@ -22,7 +22,7 @@
                 Play
             {/if}
         </button>
-        <PerformanceMeter></PerformanceMeter>
+        <PerformanceMeter/>
     </div>
 </main>
 

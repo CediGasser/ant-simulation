@@ -12,19 +12,8 @@ export interface Ant extends GameObject {
     hasFood: boolean
 }
 
-export interface Obstacle extends GameObject {
-    isDeadly: boolean
-}
-
-enum FoodType {
-    Leaf,
-    Apple,
-    Sugar
-}
-
 export interface FoodSource extends GameObject {
     capacity: number
-    type: FoodType
 }
 
 export interface Nest extends GameObject {
