@@ -1,6 +1,6 @@
 <script>
-    import PixiSimulation from "$lib/components/PixiSimulation.svelte"
-    import PerformanceMeter from "$lib/components/PerformanceMeter.svelte"
+    import PixiSimulation from '$lib/components/PixiSimulation.svelte'
+    import PerformanceMeter from '$lib/components/PerformanceMeter.svelte'
     import Seo from '$lib/components/Seo.svelte'
 
     let antCount = 100
@@ -30,19 +30,20 @@
     @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
     * {
         font-family: Nunito, Roboto, system-ui, sans-serif;
-        color: #D9CB6B;
     }
     main {
-        display: flex;
-        padding: 24px;
-        background-color: #0F111A;
+        height: 100%;
+
+        padding: 32px;
+        background-color: var(--c-accentContrasted);
     }
     button, input {
-        background-color: brown;
-        width: 80px;
+        background-color: var(--c-background);
+        width: 96px;
         border-radius: 4px;
         border: none;
-        box-shadow: 4px 4px 8px black;
-        margin: 8px; 
+        box-shadow: var(--shadow);
+        margin: 8px;
+        height: 32px;
     }
 </style>

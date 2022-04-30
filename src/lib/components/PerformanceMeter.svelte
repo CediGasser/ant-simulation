@@ -22,9 +22,13 @@
 
 <style>
     p {
-        background-color: brown;
-        width: 80px;
-        border-radius: 4px;
         text-align: center;
+        background-color: var(--c-background);
+        width: 96px;
+        border-radius: 4px;
+        border: none;
+        box-shadow: var(--shadow);
+        margin: 8px; 
+        height: 32px;
     }
 </style>

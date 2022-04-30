@@ -9,24 +9,27 @@ export default class PixiSimulation {
     private nest: Nest
     private foodSources: FoodSource[]
     private ants: Ant[]
+    private obstacles: Obstacle[]
 
     private dataSubscriptions: ((data: object) => object)[]
 
     constructor(canvasContainer: HTMLElement) {
         this.app = new PIXI.Application()
         canvasContainer.appendChild(this.app.view)
+
+
     }
 
     start() {
-
+        this.app.start()
     }
 
     pause() {
-
+        this.app.stop()
     }
 
     reset() {
-
+        // instantiate objects new etc..
     }
 
     render() {
@@ -35,15 +38,27 @@ export default class PixiSimulation {
             return
         }
 
+        this.clearCanvas()
+
         this.nest.draw()
 
         for (let i = 0, n = this.ants.length; i < n; i++) {
             this.ants[i].draw()
         }
-        
+
         for (let i = 0, n = this.foodSources.length; i < n; i++) {
             this.foodSources[i].draw()
         } 
+    }
+
+    tick() {
+        // run each tick, in defined intervals
+        // Calc new positions of everything etc
+        // call all DataSubscribers
+    }
+
+    clearCanvas() {
+        // clear all drawings bla bla...
     }
 
     subscribeData(callback: (data: object) => object): void {
