@@ -1,5 +1,5 @@
 <script>
-    import PixiSimulation from '$lib/components/PixiSimulation.svelte'
+    import Simulation from '$lib/components/Simulation.svelte'
     import PerformanceMeter from '$lib/components/PerformanceMeter.svelte'
     import Seo from '$lib/components/Seo.svelte'
 
@@ -13,7 +13,7 @@
 <main>
     <div>
         <h1>Ant Simulation</h1>
-        <PixiSimulation {antCount} {antSize} {playing}/>
+        <Simulation/>
         <input type="number" bind:value={antCount} max="20000" min="0"/>
         <button on:click={()=>{playing = !playing}}>
             {#if playing}
