@@ -1,11 +1,14 @@
+import Cell from './Cell'
+import Nest from './Nest'
 import Obstacle from './Obstacle'
 import Constants from './Constants'
-import type p5 from 'p5'
+import p5 from 'p5'
 
 export default class World {
     gridX: number;
     gridY: number;
-    grid: Array<Array<Obstacle>>;
+    grid: Array<Array<Obstacle | Nest | Cell>>;
+    nest: Nest;
     adjPos: Array<Array<Array<p5.Vector>>>;
     p5: p5;
 
@@ -15,24 +18,29 @@ export default class World {
             gridX: Constants.GRID_W,
             gridY: Constants.GRID_H,
             obstacleCount: Constants.OBSTACLE_COUNT,
+            nestX: Constants.NEST_X,
+            nestY: Constants.NEST_Y
         }
     ) {
-      const { gridX, gridY, obstacleCount} =
+      const { gridX, gridY, obstacleCount, nestX, nestY } =
         initValues;
       this.gridX = gridX;
       this.gridY = gridY;
       this.p5 = p5;
       this.grid = this.initGrid();
+      this.nest = this.initNest(nestX, nestY);
       this.addObstacles(obstacleCount);
+      this.adjPos = this.getAdjPositions();
       this.renderAllOnce();
     }
 
-    initGrid(): Array<Array<Obstacle>> {
+    initGrid(): Array<Array<Obstacle | Nest | Cell>> {
       const grid = [];
       for (let x = 0; x < this.gridX; x++) {
-        grid.push([]);
+        grid.push([]); // add cols
+        for (let y = 0; y < this.gridY; y++) grid[x][y] = new Cell(x, y, this);
       }
-
+  
       return grid;
     }
 
@@ -57,6 +65,50 @@ export default class World {
       }
     }
 
+    getAdjPositions(): Array<Array<Array<p5.Vector>>> {
+      const adjPos: Array<Array<Array<p5.Vector>>> = [];
+      for (let x = 0; x < this.gridX; x++) {
+        adjPos.push([]);
+        for (let y = 0; y < this.gridY; y++) {
+          const neighbours = this.getNeighbours(x, y);
+          adjPos[x][y] = [];
+          neighbours.forEach((position) => {
+            // Invalid cells will be `undefined` (falsy)
+            try {
+              const cell = this.grid[position.x][position.y];
+              if (cell.type != "Obstacle") adjPos[x][y].push(position);
+            } catch (error) {
+              // TypeError due to index out of grid (ok)
+              if (!(error instanceof TypeError)) throw error;
+            }
+          }, this);
+        }
+      }
+  
+      return adjPos;
+    }
+
+    getNeighbours(x: number, y: number) {
+      return [
+        new p5.Vector(x - 1, y - 1),
+        new p5.Vector(x, y - 1),
+        new p5.Vector(x + 1, y - 1),
+  
+        new p5.Vector(x - 1, y),
+        new p5.Vector(x + 1, y),
+  
+        new p5.Vector(x - 1, y + 1),
+        new p5.Vector(x, y + 1),
+        new p5.Vector(x + 1, y + 1),
+      ];
+    }
+
+    initNest(nestX: number, nestY: number) {
+      const nest = new Nest(nestX, nestY, this);
+      this.grid[nestX][nestY] = nest;
+      return nest;
+    }
+
     update() {
         for (let x = 0; x < this.gridX; x++)
             for (let y = 0; y < this.gridY; y++) this.grid[x][y].update();
@@ -68,9 +120,10 @@ export default class World {
     }
 
     render() {
-        // Obstacles aren't rendered
-        for (let x = 0; x < this.gridX; x++)
-            for (let y = 0; y < this.gridY; y++)
-                if (this.grid[x][y].type != "Obstacle") this.grid[x][y].render(this.p5);
+      // Obstacles aren't rendered
+      for (let x = 0; x < this.gridX; x++)
+        for (let y = 0; y < this.gridY; y++)
+          if (this.grid[x][y].type != "Obstacle") this.grid[x][y].render(this.p5);
+      this.nest.render(this.p5);
     }
 }
