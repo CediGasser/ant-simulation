@@ -27,6 +27,13 @@ export default class Simulation {
     }
 
     createWorld = (): World => {
-        return new World(this.p5);
+        let newWorld: World;
+        do newWorld = new World(this.p5);
+        while (
+          newWorld.adjPos[newWorld.nest.position.x][newWorld.nest.position.y]
+            .length == 0
+        );
+
+        return newWorld;
     };
 }

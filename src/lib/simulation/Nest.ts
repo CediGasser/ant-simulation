@@ -8,17 +8,11 @@ export default class Nest extends Cell {
       this.type = "Nest";
       this.nestDistance = 0;
     }
-  
-    setNestDistance(stepsFromNest: number) {
-      // Never set nest distance to nest
-    }
-  
-    stepOnCell() {
-      // Do not increase Nest steps
-    }
-  
+
+    stepOnCell() {}
+
     update() {}
-  
+
     render(p5: p5) {
       p5.fill(100, 100, 100);
       p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
