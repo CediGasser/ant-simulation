@@ -1,4 +1,5 @@
 import Cell from './Cell'
+import Constants from './Constants';
 import type p5 from 'p5'
 import type World from './World'
 
@@ -10,7 +11,7 @@ export default class Food extends Cell {
       super(x, y, world);
       this.type = "Food";
       this.foodDistance = 0;
-      this.foodLeft = 15;
+      this.foodLeft = Constants.FOOD_STOCK;
       this.world = world;
     }
   

@@ -93,8 +93,8 @@ export default class Cell extends Obstacle {
     }
 
     render(p5: p5) {
-      if (this.fDuration == 0) p5.fill(48, 2, Math.max(98 - this.steps * 2, 20));
-      else p5.fill(50, 100, 100);
+      if (this.fDuration == 0) p5.fill(48, 2, Math.max(98 - this.steps * 2, 20));   // Darken with more steps
+      else p5.fill(50, 100, 100);                                                   // Or show as pheromone trail
       p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
   }

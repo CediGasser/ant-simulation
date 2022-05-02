@@ -2,6 +2,7 @@ import Cell from './Cell'
 import Nest from './Nest'
 import Food from './Food'
 import Obstacle from './Obstacle'
+import Ant from './Ant'
 import Constants from './Constants'
 import p5 from 'p5'
 
@@ -11,6 +12,7 @@ export default class World {
     grid: Array<Array<Obstacle | Nest | Food | Cell>>;
     nest: Nest;
     adjPos: Array<Array<Array<p5.Vector>>>;
+    ants: Array<Ant>;
     p5: p5;
 
     constructor(
@@ -19,29 +21,33 @@ export default class World {
             gridX: Constants.GRID_W,
             gridY: Constants.GRID_H,
             obstacleCount: Constants.OBSTACLE_COUNT,
+            ants: Constants.ANTS,
             nestX: Constants.NEST_X,
             nestY: Constants.NEST_Y,
             food: Constants.FOOD,
         }
     ) {
-      const { gridX, gridY, obstacleCount, nestX, nestY, food } =
+      const { gridX, gridY, obstacleCount, ants, nestX, nestY, food } =
         initValues;
       this.gridX = gridX;
       this.gridY = gridY;
       this.p5 = p5;
       this.grid = this.initGrid();
       this.nest = this.initNest(nestX, nestY);
+      this.adjPos = this.getAdjPositions();
       this.addObstacles(obstacleCount);
-        if (food) this.initFood(food);
-        this.adjPos = this.getAdjPositions();
+      if (food) this.initFood(food);
+      
+      this.adjPos = this.getAdjPositions();
+      this.ants = this.initAnts(ants);
       this.renderAllOnce();
     }
 
-    initGrid(): Array<Array<Obstacle | Nest | Cell>> {
+    initGrid(): Array<Array<Obstacle | Nest | Food | Cell>> {
       const grid = [];
-      for (let x = 0; x < this.gridX; x++) {
+      for (let x = 0; x < this.gridX; x++) {  // for each column
         grid.push([]);
-        for (let y = 0; y < this.gridY; y++) grid[x][y] = new Cell(x, y, this);
+        for (let y = 0; y < this.gridY; y++) grid[x][y] = new Cell(x, y, this);  // for each cell
       }
 
       return grid;
@@ -110,6 +116,15 @@ export default class World {
       return nest;
     }
 
+    initAnts(ants: number) {
+      const antsArray = [];
+      for (; ants; )
+        for (; ants; ants--)
+          antsArray.push(new Ant(this.nest.position.x, this.nest.position.y, this, this.p5));
+  
+      return antsArray;
+    }
+
     initFood(food: number) {
         while (food--) {
             const x = Math.floor(Math.random() * this.gridX);
@@ -123,6 +138,8 @@ export default class World {
     update() {
         for (let x = 0; x < this.gridX; x++)
             for (let y = 0; y < this.gridY; y++) this.grid[x][y].update();
+        
+        this.ants.forEach((ant: Ant) => ant.update());
     }
 
     renderAllOnce() {
@@ -134,6 +151,18 @@ export default class World {
       for (let x = 0; x < this.gridX; x++)
         for (let y = 0; y < this.gridY; y++)
           if (this.grid[x][y].type != "Obstacle") this.grid[x][y].render(this.p5);
+
+      this.ants.forEach((ant: Ant) => ant.render());
+      
       this.nest.render(this.p5);
     }
+
+    getCell = (position: p5.Vector): Obstacle | Cell | Food | Nest =>
+        this.grid[position.x][position.y];
+
+    getAdjCellPos = (position: p5.Vector): Array<p5.Vector> =>
+        this.adjPos[position.x][position.y];
+
+    isSamePosition = (pos1: p5.Vector, pos2: p5.Vector): boolean =>
+        pos1.x == pos2.x && pos1.y == pos2.y;
 }
