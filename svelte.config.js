@@ -14,7 +14,10 @@ const config = {
 			assets: 'build',
 			fallback: null
 		}),
-		target: '#svelte'
+
+		prerender: {
+			enabled: false
+		}
 	}
 };
 
