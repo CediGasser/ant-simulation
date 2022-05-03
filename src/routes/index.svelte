@@ -34,7 +34,7 @@
         height: 100%;
         padding: 32px;
     }
-    button, input {
+    button {
         background-color: var(--c-background);
         width: 96px;
         border-radius: 4px;
