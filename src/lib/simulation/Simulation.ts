@@ -36,4 +36,13 @@ export default class Simulation {
 
         return newWorld;
     };
+
+    setRunning = (running: boolean): void => {
+        if (running) this.p5.loop();
+        else this.p5.noLoop();
+    };
+      
+    reset = (): void => {
+        this.world = this.createWorld();
+    };
 }

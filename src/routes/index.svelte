@@ -1,11 +1,9 @@
-<script>
-    import Simulation from '$lib/components/Simulation.svelte'
+<script lang="ts">
+    import Simulation, { resetSimulation } from '$lib/components/Simulation.svelte'
     import PerformanceMeter from '$lib/components/PerformanceMeter.svelte'
     import Seo from '$lib/components/Seo.svelte'
 
-    let antCount = 100
-    let antSize = 1
-    let playing = false
+    let running = true
 </script>
 
 <Seo title="Ant Simulation" keywords="Ants Simulation" type="Website" description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned." image="/social_preview.png"/>
@@ -13,15 +11,16 @@
 <main>
     <div>
         <h1>Ant Simulation</h1>
-        <Simulation/>
-        <input type="number" bind:value={antCount} max="20000" min="0"/>
-        <button on:click={()=>{playing = !playing}}>
-            {#if playing}
+        <Simulation {running}/>
+
+        <button on:click={()=>running = !running}>
+            {#if running}
                 Pause
             {:else}
                 Play
             {/if}
         </button>
+        <button on:click={resetSimulation}>Reset</button>
         <PerformanceMeter/>
     </div>
 </main>
@@ -33,9 +32,7 @@
     }
     main {
         height: 100%;
-
         padding: 32px;
-        background-color: var(--c-accentContrasted);
     }
     button, input {
         background-color: var(--c-background);
