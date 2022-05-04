@@ -7,7 +7,7 @@
 	export function resetSimulation() { simulation.reset() }
 </script>
 
-<script lang="ts">    
+<script lang="ts">
 	export let running: boolean
 	$: simulation?.setRunning(running)
 

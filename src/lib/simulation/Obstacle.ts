@@ -1,4 +1,5 @@
 import p5 from 'p5'
+import Constants from './Constants';
 import type World from './World'
 
 export default class Obstacle {
@@ -8,7 +9,7 @@ export default class Obstacle {
   
     constructor(x: number, y: number) {
       this.position = new p5.Vector(x, y);
-      this.size = 10;
+      this.size = Constants.CELL_SIZE;
       this.type = "Obstacle";
     }
   
