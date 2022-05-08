@@ -9,7 +9,5 @@ export default {
     FOOD_STOCK: 10,
     OBSTACLE_COUNT: 10,
     OBSTACLE_SIZE: 5,
-    DELIVERY_MODE: "Delivery",
-    SCAVENGER_MODE: "Scavenger",
-    FRAMERATE: 60,
+    FRAMERATE: 60
 }

@@ -1,6 +1,6 @@
 import Obstacle from './Obstacle'
 import type p5 from 'p5'
-import Constants from './Constants';
+import Constants from './SimulationParameters';
 import type World from './World';
 
 export default class Cell extends Obstacle {
@@ -35,7 +35,7 @@ export default class Cell extends Obstacle {
       this.world.nest.foodDistance = -1;
     }
 
-    private setCellsDistance(steps: number, property: string) {
+    private setCellsDistance(steps: number, property: string): void {
       this.setDistance(steps, property);
 
       this.world.adjPos[this.position.x][this.position.y].forEach(
@@ -55,7 +55,7 @@ export default class Cell extends Obstacle {
       );
     }
 
-    private setDistance(steps: number, property: string) {
+    private setDistance(steps: number, property: string): void {
       if (property == "nest") {
         if (this.nestDistance > steps) this.nestDistance = steps;
       } else {
@@ -72,12 +72,12 @@ export default class Cell extends Obstacle {
       this.addStep();
     }
 
-    private addStep(n = 1) {
+    private addStep(n = 1): void {
       this.stepDuration = Cell.stepDuration;
       this.steps += n;
     }
 
-    private decreaseSteps() {
+    private decreaseSteps(): void {
       this.steps--;
     }
 
@@ -87,7 +87,7 @@ export default class Cell extends Obstacle {
       if (this.fDuration == 0) this.foodDistance = -1;
     }
 
-    private updateSteps() {
+    private updateSteps(): void {
       this.stepDuration--;
       if (this.stepDuration < 0) this.decreaseSteps();
     }

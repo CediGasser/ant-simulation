@@ -1,5 +1,5 @@
 import Cell from './Cell'
-import Constants from './Constants';
+import Constants from './SimulationParameters';
 import type p5 from 'p5'
 import type World from './World'
 
@@ -8,15 +8,15 @@ export default class Food extends Cell {
     world: World;
 
     constructor(x: number, y: number, world: World) {
-      super(x, y, world);
-      this.type = "Food";
-      this.foodDistance = 0;
-      this.foodLeft = Constants.FOOD_STOCK;
-      this.world = world;
+        super(x, y, world);
+        this.type = "Food";
+        this.foodDistance = 0;
+        this.foodLeft = Constants.FOOD_STOCK;
+        this.world = world;
     }
 
     public eatFood(): void {
-      this.foodLeft--;
+        this.foodLeft--;
     }
 
     public update(): void {
@@ -25,11 +25,11 @@ export default class Food extends Cell {
                 this.position.x,
                 this.position.y,
                 this.world
-        );
+            );
     }
 
-   public render(p5: p5): void {
+    public render(p5: p5): void {
         p5.fill(255);
         p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
-  }
+}

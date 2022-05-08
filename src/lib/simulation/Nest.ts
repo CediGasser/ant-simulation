@@ -9,13 +9,13 @@ export default class Nest extends Cell {
         this.nestDistance = 0;
     }
 
-    public stepOnCell():void {
+    public stepOnCell(): void {
     }
 
     public update(): void {
     }
 
-    public render(p5: p5):void {
+    public render(p5: p5): void {
         p5.fill(100, 100, 100);
         p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }

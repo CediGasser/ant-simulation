@@ -1,6 +1,6 @@
 import type p5 from 'p5'
 import World from './World'
-import Constants from './Constants';
+import Constants from './SimulationParameters';
 
 export default class Simulation {
     p5: p5;
@@ -11,7 +11,7 @@ export default class Simulation {
         this.setup();
     }
 
-    private setup() {
+    private setup(): void {
         this.p5.frameRate(Constants.FRAMERATE);
 
         this.p5.colorMode(this.p5.HSB);
@@ -27,23 +27,22 @@ export default class Simulation {
         this.world.render();
     }
 
-     private createWorld = (): World => {
+     private createWorld (): World {
         let newWorld: World;
         do newWorld = new World(this.p5);
         while (
-          newWorld.adjPos[newWorld.nest.position.x][newWorld.nest.position.y]
-            .length == 0
-        );
+          newWorld.adjPos[newWorld.nest.position.x][newWorld.nest.position.y].length == 0
+        )
 
         return newWorld;
-    };
+    }
 
-    setRunning = (running: boolean): void => {
+    public setRunning (running: boolean): void {
         if (running) this.p5.loop();
         else this.p5.noLoop();
-    };
+    }
 
-    reset = (): void => {
+    public reset (): void {
        this.world = this.createWorld();
-    };
+    }
 }
