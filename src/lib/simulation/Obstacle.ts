@@ -30,7 +30,7 @@ export default class Obstacle {
     }
 
     public render(p5: p5): void {
-        p5.fill(50);
+        p5.fill('#646464');
         p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
 }

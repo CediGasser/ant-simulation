@@ -16,7 +16,7 @@ export default class Nest extends Cell {
     }
 
     public render(p5: p5): void {
-        p5.fill(100, 100, 100);
+        p5.fill('#836539');
         p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
 }

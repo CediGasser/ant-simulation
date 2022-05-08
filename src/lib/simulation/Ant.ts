@@ -207,7 +207,7 @@ export default class Ant extends Obstacle {
     }
 
     public render(): void {
-        this.p5.fill(0, 0, 0);
+        this.p5.fill('#000000');
         this.p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
 }
