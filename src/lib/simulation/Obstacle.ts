@@ -1,6 +1,7 @@
 import p5 from 'p5'
 import Constants from './SimulationParameters';
 import type World from './World'
+import {EntityTypes} from "./EntityTypes";
 
 export default class Obstacle {
     position: p5.Vector;
@@ -10,20 +11,17 @@ export default class Obstacle {
     constructor(x: number, y: number) {
         this.position = new p5.Vector(x, y);
         this.size = Constants.CELL_SIZE;
-        this.type = "Obstacle";
+        this.type = EntityTypes.OBSTACLE;
     }
 
     public createObstacle(world: World): void {
-        if (
-            !(
-                this.position.x == world.nest.position.x &&
-                this.position.y == world.nest.position.y
-            )
-        )
-            world.grid[this.position.x][this.position.y] = new Obstacle(
-                this.position.x,
-                this.position.y
-            );
+        if (this.isNestPosition(world)) {
+            world.grid[this.position.x][this.position.y] = new Obstacle(this.position.x, this.position.y);
+        }
+    }
+
+    private isNestPosition(world: World): boolean {
+        return this.position.x != world.nest.position.x && this.position.y != world.nest.position.y
     }
 
     public update(): void {

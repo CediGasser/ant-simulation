@@ -2,6 +2,7 @@ import Obstacle from './Obstacle'
 import type p5 from 'p5'
 import Constants from './SimulationParameters';
 import type World from './World';
+import {EntityTypes} from "./EntityTypes";
 
 export default class Cell extends Obstacle {
     nestDistance: number;
@@ -16,7 +17,7 @@ export default class Cell extends Obstacle {
 
     constructor(x: number, y: number, world: World) {
         super(x, y);
-        this.type = "Cell";
+        this.type = EntityTypes.CELL;
         this.nestDistance = Number.MAX_SAFE_INTEGER;
         this.foodDistance = -1;
         this.fDuration = 0;
@@ -26,11 +27,11 @@ export default class Cell extends Obstacle {
     }
 
     public setCellsNestDistance(stepsFromNest: number): void {
-        this.setCellsDistance(stepsFromNest, "nest");
+        this.setCellsDistance(stepsFromNest, EntityTypes.NEST);
     }
 
     public setFoodDistance(stepsFromFood: number): void {
-        this.setDistance(stepsFromFood, "food");
+        this.setDistance(stepsFromFood, EntityTypes.FOOD);
         this.fDuration = Cell.foodMaxD;
         this.world.nest.foodDistance = -1;
     }
@@ -40,27 +41,33 @@ export default class Cell extends Obstacle {
 
         this.world.adjPos[this.position.x][this.position.y].forEach(
             (position: p5.Vector) => {
-                if (position.x == this.position.x || position.y == this.position.y)
+                if (position.x == this.position.x || position.y == this.position.y) {
                     (this.world.grid[position.x][position.y] as Cell).setDistance(
                         steps + 1,
                         property
                     );
-                else
+                } else {
                     (this.world.grid[position.x][position.y] as Cell).setDistance(
                         steps + 2,
                         property
                     );
+                }
             },
             this
         );
     }
 
     private setDistance(steps: number, property: string): void {
-        if (property == "nest") {
-            if (this.nestDistance > steps) this.nestDistance = steps;
+        if (property == EntityTypes.NEST) {
+            if (this.nestDistance > steps) {
+                this.nestDistance = steps;
+            }
         } else {
-            if (this.foodDistance == -1) this.foodDistance = steps;
-            else if (this.foodDistance > steps) this.foodDistance = steps;
+            if (this.foodDistance == -1) {
+                this.foodDistance = steps;
+            } else if (this.foodDistance > steps) {
+                this.foodDistance = steps;
+            }
         }
     }
 
@@ -80,12 +87,16 @@ export default class Cell extends Obstacle {
     public update(): void {
         this.updateSteps();
         this.fDuration = Math.max(--this.fDuration, 0);
-        if (this.fDuration == 0) this.foodDistance = -1;
+        if (this.fDuration == 0) {
+            this.foodDistance = -1;
+        }
     }
 
     private updateSteps(): void {
         this.stepDuration--;
-        if (this.stepDuration < 0) this.decreaseSteps();
+        if (this.stepDuration < 0) {
+            this.decreaseSteps();
+        }
     }
 
     public render(p5: p5): void {

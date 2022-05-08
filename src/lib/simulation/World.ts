@@ -5,6 +5,7 @@ import Obstacle from './Obstacle'
 import Ant from './Ant'
 import Parameters from './SimulationParameters'
 import p5 from 'p5'
+import {EntityTypes} from "./EntityTypes";
 
 export default class World {
     gridX: number;
@@ -45,9 +46,9 @@ export default class World {
 
     private initGrid(): Array<Array<Obstacle | Nest | Food | Cell>> {
         const grid = [];
-        for (let x = 0; x < this.gridX; x++) {  // for each column
+        for (let x = 0; x < this.gridX; x++) {
             grid.push([]);
-            for (let y = 0; y < this.gridY; y++) grid[x][y] = new Cell(x, y, this);  // for each cell
+            for (let y = 0; y < this.gridY; y++) grid[x][y] = new Cell(x, y, this);
         }
         return grid;
     }
@@ -60,7 +61,7 @@ export default class World {
             while (expansions--) {
                 this.grid[x][y].createObstacle(this);
                 this.adjPos[x][y].forEach((position: p5.Vector) => {
-                    if (this.grid[position.x][position.y].type != "Nest")
+                    if (this.grid[position.x][position.y].type != EntityTypes.NEST)
                         this.grid[position.x][position.y] = new Obstacle(
                             position.x,
                             position.y
@@ -149,7 +150,7 @@ export default class World {
     public render(): void {
         for (let x = 0; x < this.gridX; x++)
             for (let y = 0; y < this.gridY; y++)
-                if (this.grid[x][y].type != "Obstacle") this.grid[x][y].render(this.p5);
+                if (this.grid[x][y].type != EntityTypes.OBSTACLE) this.grid[x][y].render(this.p5);
 
         this.ants.forEach((ant: Ant) => ant.render());
 

@@ -2,6 +2,7 @@ import Cell from './Cell'
 import Constants from './SimulationParameters';
 import type p5 from 'p5'
 import type World from './World'
+import {EntityTypes} from "./EntityTypes";
 
 export default class Food extends Cell {
     foodLeft: number;
@@ -9,7 +10,7 @@ export default class Food extends Cell {
 
     constructor(x: number, y: number, world: World) {
         super(x, y, world);
-        this.type = "Food";
+        this.type = EntityTypes.FOOD;
         this.foodDistance = 0;
         this.foodLeft = Constants.FOOD_STOCK;
         this.world = world;
@@ -20,12 +21,9 @@ export default class Food extends Cell {
     }
 
     public update(): void {
-        if (this.foodLeft <= 0)
-            this.world.grid[this.position.x][this.position.y] = new Cell(
-                this.position.x,
-                this.position.y,
-                this.world
-            );
+        if (this.foodLeft <= 0) {
+            this.world.grid[this.position.x][this.position.y] = new Cell(this.position.x, this.position.y, this.world);
+        }
     }
 
     public render(p5: p5): void {

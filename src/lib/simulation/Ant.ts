@@ -1,10 +1,10 @@
 import Obstacle from "./Obstacle";
 import p5 from 'p5';
-import Parameters from './SimulationParameters'
 import type World from "./World";
 import type Cell from './Cell';
 import type Food from './Food';
-import { AntStates } from "./AntStates";
+import {AntStates} from "./AntStates";
+import {EntityTypes} from "./EntityTypes";
 
 export default class Ant extends Obstacle {
     state: string;
@@ -15,35 +15,26 @@ export default class Ant extends Obstacle {
     world: World;
     p5: p5;
 
-    static maxFuel = Math.max(Parameters.GRID_W, Parameters.GRID_H) * 1.5;
-
     constructor(x: number, y: number, world: World, sketch: p5) {
         super(x, y);
-        //this.position = createVector(x, y);
-        // this.size = CELL_SIZE;
-        this.type = "Ant";
+        this.type = EntityTypes.ANT;
         this.state = AntStates.SCAVENGER_MODE;
-        // this.fuel = Ant.maxFuel;
         this.stepsFromNest = 0;
         this.stepsFromFood = -1;
         this.erase = false;
         this.prevPosition = new p5.Vector(-1, -1);
-        // this.penalty = 0;
         this.world = world;
         this.p5 = sketch;
     }
 
     public update(): void {
-        // Ants change `steps` property only when scavenging
-        // Used to avoid ants looping while delivering food
-        if (this.world.grid[this.position.x][this.position.y].type == "Nest") {
+        if (this.world.grid[this.position.x][this.position.y].type == EntityTypes.NEST) {
             this.reachedNest();
         }
 
-        if (this.world.grid[this.position.x][this.position.y].type == "Food") {
+        if (this.world.grid[this.position.x][this.position.y].type == EntityTypes.FOOD) {
             this.reachedFood();
         }
-        // Update current cell steps count
         (this.world.getCell(this.position) as Cell).stepOnCell();
 
         this.stepsFromNest++;
@@ -51,25 +42,20 @@ export default class Ant extends Obstacle {
             this.stepsFromFood++;
         }
 
-        // Getting new position
         let newPos: p5.Vector;
         if (this.state == AntStates.SCAVENGER_MODE) {
-            // Try getting food trail, else move randomly
-            // If initial position is the nest, then move randomly
             if (
                 this.isCloseToNest() ||
                 !(newPos = this.getMinDistanceFood()) ||
                 this.world.isSamePosition(newPos, this.prevPosition)
-            )
+            ) {
                 do newPos = this.randomWalk();
                 while (
-                    // Get a random new position that is not the
-                    // previous one. Unless that's the only one
-                this.world.getAdjCellPos(this.position).length != 1 &&
-                this.world.isSamePosition(newPos, this.prevPosition)
+                    this.world.getAdjCellPos(this.position).length != 1 &&
+                    this.world.isSamePosition(newPos, this.prevPosition)
                     );
+            }
         }
-        // DELIVERY_MODE
         else {
             newPos = this.getMinNestDistanceCell();
             if (this.erase) (this.world.getCell(this.position) as Cell).eraseFoodTrail();
@@ -86,11 +72,9 @@ export default class Ant extends Obstacle {
         if (this.state == AntStates.SCAVENGER_MODE) {
             this.updateNestDistance();
         }
-        // DELIVERY_MODE
         else if (this.stepsFromFood != -1) {
             (this.world.getCell(this.position) as Cell).setFoodDistance(this.stepsFromFood);
         }
-        // TODO update prevPositions
     }
 
     private getMinDistanceFood(): p5.Vector {
@@ -98,18 +82,14 @@ export default class Ant extends Obstacle {
             (this.world.getCell(this.position) as Cell).foodDistance == -1
                 ? Number.MAX_SAFE_INTEGER
                 : (this.world.getCell(this.position) as Cell).foodDistance;
-        // Return a cell with less food distance, undefined if none
         const newPos = this.world.adjPos[this.position.x][this.position.y].reduce(
             (foodPos: p5.Vector, nextPos: p5.Vector) => {
-                // If nextPos doesn't have a valid value, skip
                 if ((this.world.grid[nextPos.x][nextPos.y] as Cell).foodDistance == -1) {
                     return foodPos;
                 }
-                // If current foodPos isn't set ( == -1) but next is set
                 if ((this.world.grid[foodPos.x][foodPos.y] as Cell).foodDistance == -1) {
                     return nextPos;
                 }
-                // If nextPos is a valid value, update to min
                 if (
                     (this.world.grid[foodPos.x][foodPos.y] as Cell).foodDistance != -1 &&
                     (this.world.grid[nextPos.x][nextPos.y] as Cell).foodDistance <
@@ -122,12 +102,10 @@ export default class Ant extends Obstacle {
             }
         );
 
-        // If no improvement, abort
         if ((this.world.getCell(newPos) as Cell).foodDistance >= initialDistance) {
             return undefined;
         }
 
-        // Return newPos if it has a valid foodDistance value
         if ((this.world.grid[newPos.x][newPos.y] as Cell).foodDistance != -1) {
             return newPos;
         }
@@ -140,8 +118,9 @@ export default class Ant extends Obstacle {
                 if (
                     (this.world.grid[nextPos.x][nextPos.y] as Cell).nestDistance <
                     (this.world.grid[minPos.x][minPos.y] as Cell).nestDistance
-                )
+                ) {
                     return nextPos;
+                }
                 return minPos;
             }
         );
@@ -172,16 +151,13 @@ export default class Ant extends Obstacle {
     private updateNestDistance(): void {
         if (this.stepsFromNest > (this.world.getCell(this.position) as Cell).nestDistance) {
             this.stepsFromNest = (this.world.getCell(this.position) as Cell).nestDistance;
-        }
-            // Update ant distance to cell stored value
-        // Update cells with ant's new closest distance
-        else {
+        } else {
             (this.world.getCell(this.position) as Cell).setCellsNestDistance(this.stepsFromNest);
         }
     }
 
     private isDiagonal(newPos: p5.Vector): boolean {
-        return !(this.position.x == newPos.x || this.position.y == newPos.y);
+        return this.position.x != newPos.x || this.position.y != newPos.y;
     }
 
     private reachedFood(): void {
