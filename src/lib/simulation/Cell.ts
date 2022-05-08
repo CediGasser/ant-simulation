@@ -25,17 +25,17 @@ export default class Cell extends Obstacle {
       this.world = world;
     }
 
-    setCellsNestDistance(stepsFromNest: number) {
+    public setCellsNestDistance(stepsFromNest: number): void {
       this.setCellsDistance(stepsFromNest, "nest");
     }
 
-    setFoodDistance(stepsFromFood: number) {
+    public setFoodDistance(stepsFromFood: number): void {
       this.setDistance(stepsFromFood, "food");
       this.fDuration = Cell.foodMaxD;
       this.world.nest.foodDistance = -1;
     }
 
-    setCellsDistance(steps: number, property: string) {
+    private setCellsDistance(steps: number, property: string) {
       this.setDistance(steps, property);
 
       this.world.adjPos[this.position.x][this.position.y].forEach(
@@ -55,7 +55,7 @@ export default class Cell extends Obstacle {
       );
     }
 
-    setDistance(steps: number, property: string) {
+    private setDistance(steps: number, property: string) {
       if (property == "nest") {
         if (this.nestDistance > steps) this.nestDistance = steps;
       } else {
@@ -64,37 +64,37 @@ export default class Cell extends Obstacle {
       }
     }
 
-    eraseFoodTrail() {
+    public eraseFoodTrail(): void {
       this.fDuration = 0;
     }
 
-    stepOnCell() {
+    public stepOnCell(): void {
       this.addStep();
     }
 
-    addStep(n = 1) {
+    private addStep(n = 1) {
       this.stepDuration = Cell.stepDuration;
       this.steps += n;
     }
 
-    decreaseSteps() {
+    private decreaseSteps() {
       this.steps--;
     }
 
-    update() {
+    public update(): void {
       this.updateSteps();
       this.fDuration = Math.max(--this.fDuration, 0);
       if (this.fDuration == 0) this.foodDistance = -1;
     }
 
-    updateSteps() {
+    private updateSteps() {
       this.stepDuration--;
       if (this.stepDuration < 0) this.decreaseSteps();
     }
 
-    render(p5: p5) {
-      if (this.fDuration == 0) p5.fill(48, 2, Math.max(98 - this.steps * 2, 20));   // Darken with more steps
-      else p5.fill(50, 100, 100);                                                   // Or show as pheromone trail
+    public render(p5: p5): void {
+      if (this.fDuration == 0) p5.fill(131, 101, Math.max(57 - this.steps * 2, 20));   // Darken with more steps
+      else p5.fill('#92a4ac');                                                   // Or show as pheromone trail
       p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
   }

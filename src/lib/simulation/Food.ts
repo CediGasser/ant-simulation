@@ -6,7 +6,7 @@ import type World from './World'
 export default class Food extends Cell {
     foodLeft: number;
     world: World;
-  
+
     constructor(x: number, y: number, world: World) {
       super(x, y, world);
       this.type = "Food";
@@ -14,12 +14,12 @@ export default class Food extends Cell {
       this.foodLeft = Constants.FOOD_STOCK;
       this.world = world;
     }
-  
-    eatFood() {
+
+    public eatFood(): void {
       this.foodLeft--;
     }
-  
-    update() {
+
+    public update(): void {
         if (this.foodLeft <= 0)
             this.world.grid[this.position.x][this.position.y] = new Cell(
                 this.position.x,
@@ -27,9 +27,9 @@ export default class Food extends Cell {
                 this.world
         );
     }
-  
-    render(p5: p5) {
-        p5.fill(20, 100, 100);
+
+   public render(p5: p5): void {
+        p5.fill(255);
         p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
   }

@@ -6,14 +6,14 @@ export default class Obstacle {
     position: p5.Vector;
     size: number;
     type: string;
-  
+
     constructor(x: number, y: number) {
       this.position = new p5.Vector(x, y);
       this.size = Constants.CELL_SIZE;
       this.type = "Obstacle";
     }
-  
-    createObstacle(world: World) {
+
+    public createObstacle(world: World):void {
       if (
         !(
           this.position.x == world.nest.position.x &&
@@ -25,10 +25,10 @@ export default class Obstacle {
           this.position.y
         );
     }
-    update() {}
-  
-    render(p5: p5) {
-        p5.fill(240, 100, 100);
+    public update():void {}
+
+    public render(p5: p5):void {
+        p5.fill(50);
         p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
   }

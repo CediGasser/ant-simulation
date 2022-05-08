@@ -11,7 +11,7 @@ export default class Simulation {
         this.setup();
     }
 
-    setup() {
+    private setup() {
         this.p5.frameRate(Constants.FRAMERATE);
 
         this.p5.colorMode(this.p5.HSB);
@@ -22,12 +22,12 @@ export default class Simulation {
         this.world.render();
       }
 
-    draw() {
-        this.world.update();
+    public draw(): void {
+         this.world.update();
         this.world.render();
     }
 
-    createWorld = (): World => {
+     private createWorld = (): World => {
         let newWorld: World;
         do newWorld = new World(this.p5);
         while (
@@ -42,8 +42,8 @@ export default class Simulation {
         if (running) this.p5.loop();
         else this.p5.noLoop();
     };
-      
+
     reset = (): void => {
-        this.world = this.createWorld();
+       this.world = this.createWorld();
     };
 }

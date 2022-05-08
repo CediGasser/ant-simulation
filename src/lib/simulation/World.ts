@@ -27,23 +27,23 @@ export default class World {
             food: Constants.FOOD,
         }
     ) {
-      const { gridX, gridY, obstacleCount, ants, nestX, nestY, food } =
-        initValues;
-      this.gridX = gridX;
-      this.gridY = gridY;
-      this.p5 = p5;
-      this.grid = this.initGrid();
-      this.nest = this.initNest(nestX, nestY);
-      this.adjPos = this.getAdjPositions();
-      this.addObstacles(obstacleCount);
-      if (food) this.initFood(food);
-      
-      this.adjPos = this.getAdjPositions();
-      this.ants = this.initAnts(ants);
-      this.renderAllOnce();
+        const { gridX, gridY, obstacleCount, ants, nestX, nestY, food } =
+            initValues;
+        this.gridX = gridX;
+        this.gridY = gridY;
+        this.p5 = p5;
+        this.grid = this.initGrid();
+        this.nest = this.initNest(nestX, nestY);
+        this.adjPos = this.getAdjPositions();
+        this.addObstacles(obstacleCount);
+        if (food) this.initFood(food);
+
+        this.adjPos = this.getAdjPositions();
+        this.ants = this.initAnts(ants);
+        this.renderAllOnce();
     }
 
-    initGrid(): Array<Array<Obstacle | Nest | Food | Cell>> {
+    private initGrid(): Array<Array<Obstacle | Nest | Food | Cell>> {
       const grid = [];
       for (let x = 0; x < this.gridX; x++) {  // for each column
         grid.push([]);
@@ -53,7 +53,7 @@ export default class World {
       return grid;
     }
 
-    addObstacles(quantity: number) {
+    private addObstacles(quantity: number) {
       while (quantity--) {
         let x = Math.floor(Math.random() * this.gridX);
         let y = Math.floor(Math.random() * this.gridY);
@@ -74,14 +74,14 @@ export default class World {
       }
     }
 
-    getAdjPositions(): Array<Array<Array<p5.Vector>>> {
+   private getAdjPositions(): Array<Array<Array<p5.Vector>>> {
       const adjPos: Array<Array<Array<p5.Vector>>> = [];
       for (let x = 0; x < this.gridX; x++) {
         adjPos.push([]);
         for (let y = 0; y < this.gridY; y++) {
           const neighbours = this.getNeighbours(x, y);
           adjPos[x][y] = [];
-          neighbours.forEach((position) => {
+          neighbours.forEach(async (position) => {
             try {
               const cell = this.grid[position.x][position.y];
               if (cell.type != "Obstacle") adjPos[x][y].push(position);
@@ -95,7 +95,7 @@ export default class World {
       return adjPos;
     }
 
-    getNeighbours(x: number, y: number) {
+    private getNeighbours(x: number, y: number) {
       return [
         new p5.Vector(x - 1, y - 1),
         new p5.Vector(x, y - 1),
@@ -110,22 +110,22 @@ export default class World {
       ];
     }
 
-    initNest(nestX: number, nestY: number) {
+    private initNest(nestX: number, nestY: number) {
       const nest = new Nest(nestX, nestY, this);
       this.grid[nestX][nestY] = nest;
       return nest;
     }
 
-    initAnts(ants: number) {
+    private initAnts(ants: number) {
       const antsArray = [];
       for (; ants; )
         for (; ants; ants--)
           antsArray.push(new Ant(this.nest.position.x, this.nest.position.y, this, this.p5));
-  
+
       return antsArray;
     }
 
-    initFood(food: number) {
+    private initFood(food: number) {
         while (food--) {
             const x = Math.floor(Math.random() * this.gridX);
             const y = Math.floor(Math.random() * this.gridY);
@@ -135,25 +135,25 @@ export default class World {
         }
     }
 
-    update() {
+    public update():void {
         for (let x = 0; x < this.gridX; x++)
             for (let y = 0; y < this.gridY; y++) this.grid[x][y].update();
-        
+
         this.ants.forEach((ant: Ant) => ant.update());
     }
 
-    renderAllOnce() {
+    private renderAllOnce() {
       for (let x = 0; x < this.gridX; x++)
         for (let y = 0; y < this.gridY; y++) this.grid[x][y].render(this.p5);
     }
 
-    render() {
+    public render(): void {
       for (let x = 0; x < this.gridX; x++)
         for (let y = 0; y < this.gridY; y++)
           if (this.grid[x][y].type != "Obstacle") this.grid[x][y].render(this.p5);
 
       this.ants.forEach((ant: Ant) => ant.render());
-      
+
       this.nest.render(this.p5);
     }
 
