@@ -1,6 +1,6 @@
 import type p5 from 'p5'
 import World from './World'
-import Constants from './SimulationParameters';
+import Parameters from './SimulationParameters';
 
 export default class Simulation {
     p5: p5;
@@ -12,7 +12,7 @@ export default class Simulation {
     }
 
     private setup(): void {
-        this.p5.frameRate(Constants.FRAMERATE);
+        this.p5.frameRate(Parameters.FRAMERATE);
 
         this.p5.colorMode(this.p5.HSB);
         this.p5.background(0, 0, 100);
