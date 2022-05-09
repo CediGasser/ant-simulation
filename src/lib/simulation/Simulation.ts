@@ -1,6 +1,6 @@
 import type p5 from 'p5'
 import World from './World'
-import Parameters from './SimulationParameters';
+import Parameters from './environment/SimulationParameters';
 
 export default class Simulation {
     p5: p5;

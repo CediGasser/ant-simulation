@@ -1,7 +1,7 @@
 import p5 from 'p5'
-import Constants from './SimulationParameters';
-import type World from './World'
-import {EntityTypes} from "./EntityTypes";
+import Constants from '../environment/SimulationParameters';
+import type World from '../World'
+import {EntityTypes} from "./types/EntityTypes";
 
 export default class Obstacle {
     position: p5.Vector;

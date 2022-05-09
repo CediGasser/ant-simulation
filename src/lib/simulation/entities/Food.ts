@@ -1,8 +1,8 @@
 import Cell from './Cell'
-import Constants from './SimulationParameters';
+import Constants from '../environment/SimulationParameters';
 import type p5 from 'p5'
-import type World from './World'
-import {EntityTypes} from "./EntityTypes";
+import type World from '../World'
+import {EntityTypes} from "./types/EntityTypes";
 
 export default class Food extends Cell {
     foodLeft: number;

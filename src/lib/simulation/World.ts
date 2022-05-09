@@ -1,11 +1,11 @@
-import Cell from './Cell'
-import Nest from './Nest'
-import Food from './Food'
-import Obstacle from './Obstacle'
-import Ant from './Ant'
-import Parameters from './SimulationParameters'
+import Cell from './entities/Cell'
+import Nest from './entities/Nest'
+import Food from './entities/Food'
+import Obstacle from './entities/Obstacle'
+import Ant from './entities/Ant'
+import Parameters from './environment/SimulationParameters'
 import p5 from 'p5'
-import {EntityTypes} from "./EntityTypes";
+import {EntityTypes} from "./entities/types/EntityTypes";
 
 export default class World {
     gridX: number;

@@ -1,10 +1,10 @@
 import Obstacle from "./Obstacle";
 import p5 from 'p5';
-import type World from "./World";
+import type World from "../World";
 import type Cell from './Cell';
 import type Food from './Food';
-import {AntStates} from "./AntStates";
-import {EntityTypes} from "./EntityTypes";
+import {AntStates} from "./states/AntStates";
+import {EntityTypes} from "./types/EntityTypes";
 
 export default class Ant extends Obstacle {
     state: string;
