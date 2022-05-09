@@ -1,13 +1,19 @@
 <script lang="ts" context="module">
 	import P5, { type Sketch } from 'p5-svelte'
     import Simulation from '$lib/simulation/Simulation'
-	import Parameters from "../simulation/environment/SimulationParameters";
 
 	let simulation: Simulation
 
 	export function resetSimulation() { simulation.reset() }
+</script>
 
+<script lang="ts">
+	
+	import Parameters from "../simulation/environment/SimulationParameters";
+
+	
 	export let running: boolean
+	
 	$: simulation?.setRunning(running)
 
     const sketch: Sketch = (p5) => {
