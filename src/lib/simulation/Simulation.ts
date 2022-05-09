@@ -11,30 +11,9 @@ export default class Simulation {
         this.setup();
     }
 
-    private setup(): void {
-        this.p5.frameRate(Parameters.FRAMERATE);
-
-        this.p5.colorMode(this.p5.HSB);
-        this.p5.background(0, 0, 100);
-        this.p5.strokeWeight(0);
-
-        this.world = this.createWorld();
-        this.world.render();
-    }
-
     public draw(): void {
         this.world.update();
         this.world.render();
-    }
-
-    private createWorld(): World {
-        let newWorld: World;
-        do newWorld = new World(this.p5);
-        while (
-            newWorld.adjPos[newWorld.nest.position.x][newWorld.nest.position.y].length == 0
-            )
-
-        return newWorld;
     }
 
     public setRunning(running: boolean): void {
@@ -47,5 +26,26 @@ export default class Simulation {
 
     public reset(): void {
         this.world = this.createWorld();
+    }
+
+    private setup(): void {
+        this.p5.frameRate(Parameters.FRAMERATE);
+
+        this.p5.colorMode(this.p5.HSB);
+        this.p5.background(0, 0, 100);
+        this.p5.strokeWeight(0);
+
+        this.world = this.createWorld();
+        this.world.render();
+    }
+
+    private createWorld(): World {
+        let newWorld: World;
+        do newWorld = new World(this.p5);
+        while (
+            newWorld.adjPos[newWorld.nest.position.x][newWorld.nest.position.y].length == 0
+            )
+
+        return newWorld;
     }
 }

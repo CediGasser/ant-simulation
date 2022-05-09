@@ -26,6 +26,23 @@ export default class Cell extends Obstacle {
         this.world = world;
     }
 
+    public render(p5: p5): void {
+        if (this.fDuration == 0) {
+            p5.fill(104, 44, this.setBrightnessValue(49));
+        } else {
+            p5.fill('#92a4ac');
+        }
+        p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
+    }
+
+    public update(): void {
+        this.updateSteps();
+        this.fDuration = Math.max(--this.fDuration, 0);
+        if (this.fDuration == 0) {
+            this.foodDistance = -1;
+        }
+    }
+
     public setCellsNestDistance(stepsFromNest: number): void {
         this.setCellsDistance(stepsFromNest, EntityTypes.NEST);
     }
@@ -84,28 +101,11 @@ export default class Cell extends Obstacle {
         this.steps--;
     }
 
-    public update(): void {
-        this.updateSteps();
-        this.fDuration = Math.max(--this.fDuration, 0);
-        if (this.fDuration == 0) {
-            this.foodDistance = -1;
-        }
-    }
-
     private updateSteps(): void {
         this.stepDuration--;
         if (this.stepDuration < 0) {
             this.decreaseSteps();
         }
-    }
-
-    public render(p5: p5): void {
-        if (this.fDuration == 0) {
-            p5.fill(104, 44, this.setBrightnessValue(49));
-        } else {
-            p5.fill('#92a4ac');
-        }
-        p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
 
     private setBrightnessValue(brightness: number): number {

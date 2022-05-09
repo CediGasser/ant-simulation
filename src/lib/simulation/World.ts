@@ -6,11 +6,12 @@ import Ant from './entities/Ant'
 import Parameters from './environment/SimulationParameters'
 import p5 from 'p5'
 import {EntityTypes} from "./entities/types/EntityTypes";
+import type BaseEntity from "./entities/BaseEntity";
 
 export default class World {
     gridX: number;
     gridY: number;
-    grid: Array<Array<Obstacle | Nest | Food | Cell>>;
+    grid: Array<Array<BaseEntity>>;
     nest: Nest;
     adjPos: Array<Array<Array<p5.Vector>>>;
     ants: Array<Ant>;
@@ -44,7 +45,24 @@ export default class World {
         this.renderAllOnce();
     }
 
-    private initGrid(): Array<Array<Obstacle | Nest | Food | Cell>> {
+    public render(): void {
+        for (let x = 0; x < this.gridX; x++)
+            for (let y = 0; y < this.gridY; y++)
+                if (this.grid[x][y].type != EntityTypes.OBSTACLE) this.grid[x][y].render(this.p5);
+
+        this.ants.forEach((ant: Ant) => ant.render());
+
+        this.nest.render(this.p5);
+    }
+
+    public update(): void {
+        for (let x = 0; x < this.gridX; x++)
+            for (let y = 0; y < this.gridY; y++) this.grid[x][y].update();
+
+        this.ants.forEach((ant: Ant) => ant.update());
+    }
+
+    private initGrid(): Array<Array<BaseEntity>> {
         const grid = [];
         for (let x = 0; x < this.gridX; x++) {
             grid.push([]);
@@ -59,7 +77,7 @@ export default class World {
             let y = Math.floor(Math.random() * this.gridY);
             let expansions = Parameters.OBSTACLE_SIZE;
             while (expansions--) {
-                this.grid[x][y].createObstacle(this);
+                new Obstacle(x, y).createObstacle(this);
                 this.adjPos[x][y].forEach((position: p5.Vector) => {
                     if (this.grid[position.x][position.y].type != EntityTypes.NEST)
                         this.grid[position.x][position.y] = new Obstacle(
@@ -135,38 +153,8 @@ export default class World {
         }
     }
 
-    public update(): void {
-        for (let x = 0; x < this.gridX; x++)
-            for (let y = 0; y < this.gridY; y++) this.grid[x][y].update();
-
-        this.ants.forEach((ant: Ant) => ant.update());
-    }
-
     private renderAllOnce(): void {
         for (let x = 0; x < this.gridX; x++)
             for (let y = 0; y < this.gridY; y++) this.grid[x][y].render(this.p5);
     }
-
-    public render(): void {
-        for (let x = 0; x < this.gridX; x++)
-            for (let y = 0; y < this.gridY; y++)
-                if (this.grid[x][y].type != EntityTypes.OBSTACLE) this.grid[x][y].render(this.p5);
-
-        this.ants.forEach((ant: Ant) => ant.render());
-
-        this.nest.render(this.p5);
-    }
-
-    public getCell(position: p5.Vector): Obstacle | Cell | Food | Nest {
-        return this.grid[position.x][position.y];
-    }
-
-    public getAdjCellPos(position: p5.Vector): Array<p5.Vector> {
-        return this.adjPos[position.x][position.y];
-    }
-
-    public isSamePosition(pos1: p5.Vector, pos2: p5.Vector): boolean {
-      return pos1.x == pos2.x && pos1.y == pos2.y;
-    }
-
 }
