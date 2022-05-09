@@ -1,5 +1,5 @@
 export default {
-    CELL_SIZE: 9,
+    CELL_SIZE: 15,
     GRID_W: 70,
     GRID_H: 70,
     NEST_X: 35,

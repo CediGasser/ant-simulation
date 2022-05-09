@@ -30,11 +30,8 @@ export default class Simulation {
 
     private setup(): void {
         this.p5.frameRate(Parameters.FRAMERATE);
-
         this.p5.colorMode(this.p5.HSB);
-        this.p5.background(0, 0, 100);
         this.p5.strokeWeight(0);
-
         this.world = this.createWorld();
         this.world.render();
     }

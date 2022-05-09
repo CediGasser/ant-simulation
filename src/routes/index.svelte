@@ -30,10 +30,6 @@
     * {
         font-family: Nunito, Roboto, system-ui, sans-serif;
     }
-    main {
-        height: 100%;
-        padding: 32px;
-    }
     button {
         background-color: var(--c-background);
         width: 96px;
