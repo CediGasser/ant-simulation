@@ -1,14 +1,21 @@
-import type p5 from 'p5'
+import p5 from 'p5'
 import type {EntityTypes} from "./types/EntityTypes";
+import Constants from "../environment/SimulationParameters";
 
-export default interface BaseEntity {
+export default abstract class BaseEntity {
 
     position: p5.Vector
-    size: number
     type: EntityTypes
+    size: number
 
-    render(p5: p5): void
+    protected constructor(x: number, y: number, type: EntityTypes) {
+        this.position = new p5.Vector(x, y);
+        this.type = type;
+        this.size = Constants.CELL_SIZE;
+    }
 
-    update(): void
+    abstract render(p5: p5): void
+
+    abstract update(): void
 
 }

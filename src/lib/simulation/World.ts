@@ -102,7 +102,7 @@ export default class World {
                 neighbours.forEach(async (position) => {
                     try {
                         const cell = this.grid[position.x][position.y];
-                        if (cell.type != "Obstacle") adjPos[x][y].push(position);
+                        if (cell.type != EntityTypes.OBSTACLE) adjPos[x][y].push(position);
                     } catch (error) {
                         if (!(error instanceof TypeError)) throw error;
                     }

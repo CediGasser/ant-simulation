@@ -1,18 +1,12 @@
-import p5 from 'p5'
-import Constants from '../environment/SimulationParameters';
+import type p5 from 'p5'
 import type World from '../World'
+import BaseEntity from "./BaseEntity";
 import {EntityTypes} from "./types/EntityTypes";
-import type BaseEntity from "./BaseEntity";
 
-export default class Obstacle implements BaseEntity{
-    position: p5.Vector;
-    size: number;
-    type: EntityTypes;
+export default class Obstacle extends BaseEntity {
 
     constructor(x: number, y: number) {
-        this.position = new p5.Vector(x, y);
-        this.size = Constants.CELL_SIZE;
-        this.type = EntityTypes.OBSTACLE;
+        super(x, y, EntityTypes.OBSTACLE);
     }
 
     public render(p5: p5): void {

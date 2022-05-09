@@ -1,10 +1,10 @@
-import Obstacle from './Obstacle'
 import type p5 from 'p5'
 import Constants from '../environment/SimulationParameters';
 import type World from '../World';
 import {EntityTypes} from "./types/EntityTypes";
+import BaseEntity from "./BaseEntity";
 
-export default class Cell extends Obstacle {
+export default class Cell extends BaseEntity {
     nestDistance: number;
     foodDistance: number;
     fDuration: number;
@@ -16,8 +16,7 @@ export default class Cell extends Obstacle {
     static foodMaxD: number = Math.max(Constants.GRID_W, Constants.GRID_H) * 1.5;
 
     constructor(x: number, y: number, world: World) {
-        super(x, y);
-        this.type = EntityTypes.CELL;
+        super(x, y, EntityTypes.CELL);
         this.nestDistance = Number.MAX_SAFE_INTEGER;
         this.foodDistance = -1;
         this.fDuration = 0;

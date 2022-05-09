@@ -1,13 +1,12 @@
-import Obstacle from "./Obstacle";
 import p5 from 'p5';
 import type World from "../World";
 import type Cell from './Cell';
 import type Food from './Food';
 import {AntStates} from "./states/AntStates";
 import {EntityTypes} from "./types/EntityTypes";
-import type BaseEntity from "./BaseEntity";
+import BaseEntity from "./BaseEntity";
 
-export default class Ant extends Obstacle {
+export default class Ant extends BaseEntity {
     state: string;
     stepsFromNest: number;
     stepsFromFood: number;
@@ -17,8 +16,7 @@ export default class Ant extends Obstacle {
     p5: p5;
 
     constructor(x: number, y: number, world: World, sketch: p5) {
-        super(x, y);
-        this.type = EntityTypes.ANT;
+        super(x, y, EntityTypes.ANT);
         this.state = AntStates.SCAVENGER_MODE;
         this.stepsFromNest = 0;
         this.stepsFromFood = -1;
