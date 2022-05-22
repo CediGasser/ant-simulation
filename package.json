@@ -28,6 +28,8 @@
   },
   "type": "module",
   "dependencies": {
+    "@material/mwc-button": "^0.26.1",
+    "@webcomponents/webcomponentsjs": "^2.6.0",
     "p5-svelte": "^3.1.2"
   }
 }

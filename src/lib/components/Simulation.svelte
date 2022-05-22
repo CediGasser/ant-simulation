@@ -8,9 +8,7 @@
 </script>
 
 <script lang="ts">
-	
 	import Parameters from "../simulation/environment/SimulationParameters";
-
 	
 	export let running: boolean
 	
@@ -22,19 +20,20 @@
             simulation = new Simulation(p5)
 		};
 		p5.draw = () => {
-			p5.ellipse(p5.width / 2, p5.height / 2, 10, 10)
             simulation.draw()
 		};
 	}
 </script>
 
-<div class="center">
+<div>
 	<P5 {sketch}/>
 </div>
 
 <style>
-	.center {
-		margin: auto;
-		width: 50%;
+	div {
+		box-shadow: var(--shadow);
+		display: inline-block;
+		border-radius: var(--radius);
+		overflow: hidden;
 	}
 </style>
