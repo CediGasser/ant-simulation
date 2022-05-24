@@ -1,5 +1,5 @@
 import Cell from './Cell'
-import Constants from '../environment/SimulationParameters';
+import Parameters from '../environment/SimulationParameters';
 import type p5 from 'p5'
 import type World from '../World'
 import {EntityTypes} from "./types/EntityTypes";
@@ -12,7 +12,7 @@ export default class Food extends Cell {
         super(x, y, world);
         this.type = EntityTypes.FOOD;
         this.foodDistance = 0;
-        this.foodLeft = Constants.FOOD_STOCK;
+        this.foodLeft = Parameters.FOOD_STOCK;
         this.world = world;
     }
 

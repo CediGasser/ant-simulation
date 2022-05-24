@@ -9,6 +9,10 @@
 
 <script lang="ts">
 	import Parameters from "../simulation/environment/SimulationParameters";
+
+	if (window.innerWidth < 500) {
+		Parameters.CELL_SIZE = 4
+	}
 	
 	export let running: boolean
 	

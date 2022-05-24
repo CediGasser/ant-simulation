@@ -1,5 +1,5 @@
 import type p5 from 'p5'
-import Constants from '../environment/SimulationParameters';
+import Parameters from '../environment/SimulationParameters';
 import type World from '../World';
 import {EntityTypes} from "./types/EntityTypes";
 import BaseEntity from "./BaseEntity";
@@ -12,8 +12,8 @@ export default class Cell extends BaseEntity {
     stepDuration: number;
     world: World;
 
-    static stepDuration: number = Math.max(Constants.GRID_W, Constants.GRID_H) * 10;
-    static foodMaxD: number = Math.max(Constants.GRID_W, Constants.GRID_H) * 1.5;
+    static stepDuration: number = Math.max(Parameters.GRID_W, Parameters.GRID_H) * 10;
+    static foodMaxD: number = Math.max(Parameters.GRID_W, Parameters.GRID_H) * 1.5;
 
     constructor(x: number, y: number, world: World) {
         super(x, y, EntityTypes.CELL);
