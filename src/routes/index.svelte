@@ -5,6 +5,7 @@
     import '@material/mwc-button'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
     import '@material/mwc-slider/slider-range'
+import Obstacle from '$lib/simulation/entities/Obstacle';
 
     let running = true
 
@@ -47,13 +48,13 @@
 
         <ul>
             <input class="slider" type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" name="OBSTACLE_COUNT" step="1"/>
-            <label for="OBSTACLE_COUNT"> Obstacle Count</label><br/>
+            <label for="OBSTACLE_COUNT"> Obstacle Count: {Parameters.OBSTACLE_COUNT}</label><br/>
             <input class="slider" type="range" bind:value={Parameters.OBSTACLE_SIZE} min="1" max="6" name="OBSTACLE_SIZE" step="1"/>
-            <label for="OBSTACLE_SIZE"> Obstacle Size</label><br/>
-            <input class="slider" type="range" bind:value={Parameters.ANTS}  min="5" max="40" name="ANTS" step="1"/>          
-            <label for="ANTS"> Ants</label><br/>
+            <label for="OBSTACLE_SIZE"> Obstacle Size: {Parameters.OBSTACLE_SIZE}</label><br/>
+            <input class="slider" type="range" bind:value={Parameters.ANTS} min="5" max="40" name="ANTS" step="1"/>          
+            <label for="ANTS"> Ants: {Parameters.ANTS}</label><br/>
             <input class="slider" type="range" bind:value={Parameters.FOOD} min="1" max="80" name="FOOD" step="1"/>
-            <label for="FOOD"> Food</label>
+            <label for="FOOD"> Food: {Parameters.FOOD}</label>
         </ul>
     </section>
 </main>
@@ -93,7 +94,7 @@
 
     .slider {
         -webkit-appearance: none;
-        width: 65%;
+        width: 50%;
         height: 20px;
         border-radius: 20px;
         background: #6c6872;
@@ -104,5 +105,10 @@
     }
     .slider:hover {
         opacity: 1; /* Fully shown on mouse-over */
+    }
+
+    label {
+        font-size: 20px;
+        font-weight: bold;
     }
 </style>
