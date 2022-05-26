@@ -4,7 +4,6 @@
     import Seo from '$lib/components/Seo.svelte'
     import '@material/mwc-button'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
-    import '@material/mwc-slider/slider-range'
 
     let running = true
 
@@ -36,11 +35,6 @@
         </div>
         <div class="ant-card">
             <h2>Carpenter Ants</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero. Culpa ut sit ipsam aspernatur.</p>
-            <mwc-button raised>Apply presets</mwc-button>
-        </div>
-        <div class="ant-card">
-            <h2>Kidnapper Ants</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero. Culpa ut sit ipsam aspernatur.</p>
             <mwc-button raised>Apply presets</mwc-button>
         </div>
