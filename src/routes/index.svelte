@@ -1,10 +1,13 @@
+<script context="module">
+    export const prerender = true;
+</script>
+
 <script lang="ts">
     import Simulation, { resetSimulation, setFramerate } from '$lib/components/Simulation.svelte'
     import PerformanceMeter from '$lib/components/PerformanceMeter.svelte'
     import Seo from '$lib/components/Seo.svelte'
     import '@material/mwc-button'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
-import { assign } from 'svelte/internal'
 
     let running = true
     let framerate = Parameters.FRAMERATE
