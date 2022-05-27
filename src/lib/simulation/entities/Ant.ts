@@ -28,7 +28,7 @@ export default class Ant extends BaseEntity {
     }
 
     public render(): void {
-        this.p5.fill(Colors.ANT_COLOR);
+        this.p5.fill(Colors.ANT_COLOR[0]);
         this.p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
 

@@ -28,7 +28,7 @@ export default class Food extends Cell {
     }
 
     public render(p5: p5): void {
-        p5.fill(Colors.FOOD_COLOR);
+        p5.fill(Colors.FOOD_COLOR[0]);
         p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
 }

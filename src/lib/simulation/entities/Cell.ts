@@ -29,9 +29,9 @@ export default class Cell extends BaseEntity {
     public render(p5: p5): void {
         if (this.fDuration == 0) {
             p5.fill(
-                Colors.FIELD_COLOR[0],
-                Colors.FIELD_COLOR[1],
-                this.setBrightnessValue(Colors.FIELD_COLOR[2])
+                Colors.FIELD_COLOR[0][0],
+                Colors.FIELD_COLOR[0][1],
+                this.setBrightnessValue(Colors.FIELD_COLOR[0][2])
             );
         } else {
             p5.fill(Colors.PHEROMONE_COLOR);
