@@ -3,6 +3,7 @@ import Parameters from '../environment/SimulationParameters';
 import type World from '../World';
 import {EntityTypes} from "./types/EntityTypes";
 import BaseEntity from "./BaseEntity";
+import Colors from "../environment/Colors";
 
 export default class Cell extends BaseEntity {
     nestDistance: number;
@@ -28,12 +29,12 @@ export default class Cell extends BaseEntity {
     public render(p5: p5): void {
         if (this.fDuration == 0) {
             p5.fill(
-                Parameters.FIELD_COLOR[0],
-                Parameters.FIELD_COLOR[1],
-                this.setBrightnessValue(Parameters.FIELD_COLOR[2])
+                Colors.FIELD_COLOR[0],
+                Colors.FIELD_COLOR[1],
+                this.setBrightnessValue(Colors.FIELD_COLOR[2])
             );
         } else {
-            p5.fill(Parameters.PHEROMON_COLOR);
+            p5.fill(Colors.PHEROMON_COLOR);
         }
         p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }

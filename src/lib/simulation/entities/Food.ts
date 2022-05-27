@@ -3,6 +3,7 @@ import Parameters from '../environment/SimulationParameters';
 import type p5 from 'p5'
 import type World from '../World'
 import {EntityTypes} from "./types/EntityTypes";
+import Colors from "../environment/Colors";
 
 export default class Food extends Cell {
     foodLeft: number;
@@ -27,7 +28,7 @@ export default class Food extends Cell {
     }
 
     public render(p5: p5): void {
-        p5.fill(Parameters.FOOD_COLOR);
+        p5.fill(Colors.FOOD_COLOR);
         p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
 }

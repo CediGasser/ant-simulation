@@ -2,7 +2,7 @@ import type p5 from 'p5'
 import type World from '../World'
 import BaseEntity from "./BaseEntity";
 import {EntityTypes} from "./types/EntityTypes";
-import Parameters from "../environment/SimulationParameters";
+import Colors from "../environment/Colors";
 
 export default class Obstacle extends BaseEntity {
 
@@ -11,7 +11,7 @@ export default class Obstacle extends BaseEntity {
     }
 
     public render(p5: p5): void {
-        p5.fill(Parameters.OBSTACLE_COLOR);
+        p5.fill(Colors.OBSTACLE_COLOR);
         p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
 
