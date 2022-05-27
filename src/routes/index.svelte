@@ -4,6 +4,7 @@
     import Seo from '$lib/components/Seo.svelte'
     import '@material/mwc-button'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
+import { assign } from 'svelte/internal'
 
     let running = true
     let framerate = Parameters.FRAMERATE
@@ -14,6 +15,7 @@
 <Seo title="Ant Simulation" keywords="Ants Simulation" type="Website" description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned." image="/social_preview.png"/>
 
 <h1>Ant Simulation</h1>
+
 <main>
     <section aria-label="Simulation">
         <Simulation {running}/>
@@ -30,17 +32,21 @@
         </div>
     </section>
     <section aria-label="Ant Descriptions">
-        <div class="ant-card">
-            <h2>Fire Ants</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero. Culpa ut sit ipsam aspernatur.</p>
-            <mwc-button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}}  raised>Apply presets</mwc-button>
-        </div>
+        
         <div class="ant-card">
             <h2>Carpenter Ants</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero. Culpa ut sit ipsam aspernatur.</p>
+            <br/>
             <mwc-button on:click={() => {Parameters.ANT_TYPE = 0; resetSimulation()}} raised>Apply presets</mwc-button>
+            <mwc-button on:click= {() => window.location.assign("/carpenterAnts")} raised>More infos</mwc-button>
         </div>
-
+        <div class="ant-card">
+            <h2>Fire Ants</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero. Culpa ut sit ipsam aspernatur.</p>
+            <br/>
+            <mwc-button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}} raised>Apply presets</mwc-button>
+            <mwc-button on:click= {() => window.location.assign("/fireAnts")} raised>More infos</mwc-button>
+        </div>
         <ul>
             <input name="obstacleCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>
             <label for="obstacleCount"> Obstacle Count: {Parameters.OBSTACLE_COUNT}</label><br/>
