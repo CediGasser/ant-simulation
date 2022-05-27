@@ -6,6 +6,8 @@
 
     import Seo from "$lib/components/Seo.svelte";
     import '@material/mwc-button'
+    import { goto } from '$app/navigation';
+
 
 </script>
 
@@ -17,7 +19,7 @@
     <div style="margin: auto;">
         <br/>
         <mwc-button style="padding-right: 20px;" on:click= {() => window.location.assign("/")} raised>Back to ant simulation</mwc-button>
-        <mwc-button on:click= {() => window.location.assign("/carpenterants")} raised>Carpenter ants</mwc-button>
+        <mwc-button on:click= {() => goto("/carpenterants")} raised>Carpenter ants</mwc-button>
     </div>
     <section aria-label="Ant Descriptions">
         <br/>
