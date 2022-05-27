@@ -40,14 +40,14 @@
         </div>
 
         <ul>
-            <input class="slider" type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" name="OBSTACLE_COUNT" step="1"/>
-            <label for="OBSTACLE_COUNT"> Obstacle Count: {Parameters.OBSTACLE_COUNT}</label><br/>
-            <input class="slider" type="range" bind:value={Parameters.OBSTACLE_SIZE} min="1" max="6" name="OBSTACLE_SIZE" step="1"/>
-            <label for="OBSTACLE_SIZE"> Obstacle Size: {Parameters.OBSTACLE_SIZE}</label><br/>
-            <input class="slider" type="range" bind:value={Parameters.ANTS} min="5" max="40" name="ANTS" step="1"/>          
-            <label for="ANTS"> Ants: {Parameters.ANTS}</label><br/>
-            <input class="slider" type="range" bind:value={Parameters.FOOD} min="1" max="80" name="FOOD" step="1"/>
-            <label for="FOOD"> Food: {Parameters.FOOD}</label>
+            <input class="slider" type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>
+            <label> Obstacle Count: {Parameters.OBSTACLE_COUNT}</label><br/>
+            <input class="slider" type="range" bind:value={Parameters.OBSTACLE_SIZE} min="1" max="6" step="1"/>
+            <label> Obstacle Size: {Parameters.OBSTACLE_SIZE}</label><br/>
+            <input class="slider" type="range" bind:value={Parameters.ANTS} min="5" max="40" step="1"/>
+            <label> Ants: {Parameters.ANTS}</label><br/>
+            <input class="slider" type="range" bind:value={Parameters.FOOD} min="1" max="80" step="1"/>
+            <label> Food: {Parameters.FOOD}</label>
         </ul>
     </section>
 </main>
@@ -68,7 +68,7 @@
     main {
         display: flex;
         flex-wrap: wrap;
-        
+
     }
     .controls {
         display: flex;
