@@ -36,6 +36,10 @@ export default class Simulation {
         this.world.render();
     }
 
+    public setFramerate(framerate: number): void {
+        this.p5.frameRate(framerate);
+    }
+
     private createWorld(): World {
         let newWorld: World;
         do newWorld = new World(this.p5);

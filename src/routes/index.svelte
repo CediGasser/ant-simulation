@@ -1,12 +1,14 @@
 <script lang="ts">
-    import Simulation, { resetSimulation } from '$lib/components/Simulation.svelte'
+    import Simulation, { resetSimulation, setFramerate } from '$lib/components/Simulation.svelte'
     import PerformanceMeter from '$lib/components/PerformanceMeter.svelte'
     import Seo from '$lib/components/Seo.svelte'
     import '@material/mwc-button'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
 
     let running = true
+    let framerate = Parameters.FRAMERATE
 
+    $: setFramerate(framerate)
 </script>
 
 <Seo title="Ant Simulation" keywords="Ants Simulation" type="Website" description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned." image="/social_preview.png"/>
@@ -40,14 +42,16 @@
         </div>
 
         <ul>
-            <input class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>
-            <label> Obstacle Count: {Parameters.OBSTACLE_COUNT}</label><br/>
-            <input class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_SIZE} min="1" max="6" step="1"/>
-            <label> Obstacle Size: {Parameters.OBSTACLE_SIZE}</label><br/>
-            <input class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.ANTS} min="5" max="40" step="1"/>
-            <label> Ants: {Parameters.ANTS}</label><br/>
-            <input class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.FOOD} min="1" max="80" step="1"/>
-            <label> Food: {Parameters.FOOD}</label>
+            <input name="obstacleCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>
+            <label for="obstacleCount"> Obstacle Count: {Parameters.OBSTACLE_COUNT}</label><br/>
+            <input name="obstacleSize" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_SIZE} min="1" max="6" step="1"/>
+            <label for="obstacleSize"> Obstacle Size: {Parameters.OBSTACLE_SIZE}</label><br/>
+            <input name="antsCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.ANTS} min="5" max="40" step="1"/>
+            <label for="antsCount"> Ants: {Parameters.ANTS}</label><br/>
+            <input name="foodCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.FOOD} min="1" max="80" step="1"/>
+            <label for="foodCount"> Food: {Parameters.FOOD}</label>
+            <input name="framerate" class="slider" type="range" bind:value={framerate} min="1" max="30" step="1"/>
+            <label for="framerate"> Speed: {framerate}</label>
         </ul>
     </section>
 </main>

@@ -4,7 +4,8 @@
 
 	let simulation: Simulation
 
-	export function resetSimulation() { simulation.reset() }
+	export function resetSimulation() { simulation?.reset() }
+	export function setFramerate(framerate: number) { simulation?.setFramerate(framerate) }
 </script>
 
 <script lang="ts">
