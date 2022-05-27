@@ -5,6 +5,7 @@ import type Food from './Food';
 import {AntStates} from "./states/AntStates";
 import {EntityTypes} from "./types/EntityTypes";
 import BaseEntity from "./BaseEntity";
+import Parameters from "../environment/SimulationParameters";
 
 export default class Ant extends BaseEntity {
     state: string;
@@ -27,7 +28,7 @@ export default class Ant extends BaseEntity {
     }
 
     public render(): void {
-        this.p5.fill('#000000');
+        this.p5.fill(Parameters.ANT_COLOR);
         this.p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
 

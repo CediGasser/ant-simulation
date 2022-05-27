@@ -27,9 +27,13 @@ export default class Cell extends BaseEntity {
 
     public render(p5: p5): void {
         if (this.fDuration == 0) {
-            p5.fill(104, 44, this.setBrightnessValue(49));
+            p5.fill(
+                Parameters.FIELD_COLOR[0],
+                Parameters.FIELD_COLOR[1],
+                this.setBrightnessValue(Parameters.FIELD_COLOR[2])
+            );
         } else {
-            p5.fill('#92a4ac');
+            p5.fill(Parameters.PHEROMON_COLOR);
         }
         p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
