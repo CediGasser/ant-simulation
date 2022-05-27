@@ -13,8 +13,25 @@
 
     let running = true
     let framerate = Parameters.FRAMERATE
+    let antSlider = 4
 
     $: setFramerate(framerate)
+    $: Parameters.ANTS = exponential(antSlider)
+
+    function exponential(position) {
+        // position will be between 0 and 100
+        var minp = 0;
+        var maxp = 100;
+
+        // The result should be between 100 an 10000000
+        var minv = Math.log(5);
+        var maxv = Math.log(2000);
+
+        // calculate adjustment factor
+        var scale = (maxv-minv) / (maxp-minp);
+
+        return Number(Math.exp(minv + scale*(position-minp)).toFixed(0));
+    }
 </script>
 
 <Seo title="Ant Simulation" keywords="Ants Simulation" type="Website" description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned." image="/social_preview.png"/>
@@ -53,7 +70,7 @@
             <label for="obstacleCount"> Obstacle Count: {Parameters.OBSTACLE_COUNT}</label><br/>
             <input name="obstacleSize" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_SIZE} min="1" max="6" step="1"/>
             <label for="obstacleSize"> Obstacle Size: {Parameters.OBSTACLE_SIZE}</label><br/>
-            <input name="antsCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.ANTS} min="5" max="40" step="1"/>
+            <input name="antsCount" class="slider" on:change={resetSimulation} type="range" bind:value={antSlider} min="0" max="100" step="1"/>
             <label for="antsCount"> Ants: {Parameters.ANTS}</label><br/>
             <input name="foodCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.FOOD} min="1" max="80" step="1"/>
             <label for="foodCount"> Food: {Parameters.FOOD}</label>
