@@ -37,19 +37,17 @@
         </div>
     </section>
     <section aria-label="Ant Descriptions">
-        
+
         <div class="ant-card">
             <h2>Carpenter Ants</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero. Culpa ut sit ipsam aspernatur.</p>
             <br/>
-            <mwc-button on:click={() => {Parameters.ANT_TYPE = 0; resetSimulation()}} raised>Apply presets</mwc-button>
+            <mwc-button on:click={() => {Parameters.ANT_TYPE = 0; resetSimulation()}} raised>Apply carpenter ants</mwc-button>
             <mwc-button on:click= {() => goto("/carpenterants")} raised>More infos</mwc-button>
         </div>
         <div class="ant-card">
             <h2>Fire Ants</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero. Culpa ut sit ipsam aspernatur.</p>
             <br/>
-            <mwc-button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}} raised>Apply presets</mwc-button>
+            <mwc-button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}} raised>Apply fire ants</mwc-button>
             <mwc-button on:click= {() => goto("/fireants")} raised>More infos</mwc-button>
         </div>
         <ul>
