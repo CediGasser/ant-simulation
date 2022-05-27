@@ -5,8 +5,6 @@ export default {
     FOOD_COLOR: ["#ffffff", "#c38a8a"],
     OBSTACLE_COLOR: ["#654321", "#646464"],
     NEST_COLOR: ["#657984", "#836539"]
-
-
 }
 
 

@@ -4,6 +4,7 @@
     import Seo from '$lib/components/Seo.svelte'
     import '@material/mwc-button'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
+    import Colors from '$lib/simulation/environment/Colors'
 
     let running = true
 
@@ -31,12 +32,12 @@
         <div class="ant-card">
             <h2>Fire Ants</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero. Culpa ut sit ipsam aspernatur.</p>
-            <mwc-button raised>Apply presets</mwc-button>
+            <mwc-button on:click={() => Parameters.ANT_TYPE = 1}  raised>Apply presets</mwc-button>
         </div>
         <div class="ant-card">
             <h2>Carpenter Ants</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero. Culpa ut sit ipsam aspernatur.</p>
-            <mwc-button raised>Apply presets</mwc-button>
+            <mwc-button on:click={() => Parameters.ANT_TYPE = 0} raised>Apply presets</mwc-button>
         </div>
 
         <ul>
