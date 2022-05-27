@@ -4,7 +4,6 @@
     import Seo from '$lib/components/Seo.svelte'
     import '@material/mwc-button'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
-    import Colors from '$lib/simulation/environment/Colors'
 
     let running = true
 
@@ -41,13 +40,13 @@
         </div>
 
         <ul>
-            <input class="slider" type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>
+            <input class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>
             <label> Obstacle Count: {Parameters.OBSTACLE_COUNT}</label><br/>
-            <input class="slider" type="range" bind:value={Parameters.OBSTACLE_SIZE} min="1" max="6" step="1"/>
+            <input class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_SIZE} min="1" max="6" step="1"/>
             <label> Obstacle Size: {Parameters.OBSTACLE_SIZE}</label><br/>
-            <input class="slider" type="range" bind:value={Parameters.ANTS} min="5" max="40" step="1"/>
+            <input class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.ANTS} min="5" max="40" step="1"/>
             <label> Ants: {Parameters.ANTS}</label><br/>
-            <input class="slider" type="range" bind:value={Parameters.FOOD} min="1" max="80" step="1"/>
+            <input class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.FOOD} min="1" max="80" step="1"/>
             <label> Food: {Parameters.FOOD}</label>
         </ul>
     </section>
