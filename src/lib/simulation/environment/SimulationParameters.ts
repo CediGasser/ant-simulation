@@ -9,5 +9,6 @@ export default {
     FOOD_STOCK: 10,
     OBSTACLE_COUNT: 10,
     OBSTACLE_SIZE: 5,
-    FRAMERATE: 10
+    FRAMERATE: 10,
+    ANT_TYPE: 0
 }
