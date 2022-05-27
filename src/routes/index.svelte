@@ -39,14 +39,12 @@
     <section aria-label="Ant Descriptions">
 
         <div class="ant-card">
-            <h2>Carpenter Ants</h2>
-            <br/>
+            <h2 class="card-title">Carpenter Ants</h2>
             <mwc-button on:click={() => {Parameters.ANT_TYPE = 0; resetSimulation()}} raised>Apply carpenter ants</mwc-button>
             <mwc-button on:click= {() => goto("/carpenterants")} raised>More infos</mwc-button>
         </div>
         <div class="ant-card">
-            <h2>Fire Ants</h2>
-            <br/>
+            <h2 class="card-title">Fire Ants</h2>
             <mwc-button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}} raised>Apply fire ants</mwc-button>
             <mwc-button on:click= {() => goto("/fireants")} raised>More infos</mwc-button>
         </div>
@@ -116,5 +114,9 @@
     label {
         font-size: 20px;
         font-weight: bold;
+    }
+
+    .card-title {
+        text-align: center;
     }
 </style>
