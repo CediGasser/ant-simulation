@@ -50,7 +50,7 @@
             <label for="antsCount"> Ants: {Parameters.ANTS}</label><br/>
             <input name="foodCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.FOOD} min="1" max="80" step="1"/>
             <label for="foodCount"> Food: {Parameters.FOOD}</label>
-            <input name="framerate" class="slider" type="range" bind:value={framerate} min="1" max="30" step="1"/>
+            <input name="framerate" class="slider" type="range" bind:value={framerate} min="5" max="30" step="1"/>
             <label for="framerate"> Speed: {framerate}</label>
         </ul>
     </section>
