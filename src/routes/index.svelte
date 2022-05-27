@@ -38,14 +38,14 @@ import { assign } from 'svelte/internal'
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero. Culpa ut sit ipsam aspernatur.</p>
             <br/>
             <mwc-button on:click={() => {Parameters.ANT_TYPE = 0; resetSimulation()}} raised>Apply presets</mwc-button>
-            <mwc-button on:click= {() => window.location.assign("/carpenterAnts")} raised>More infos</mwc-button>
+            <mwc-button on:click= {() => window.location.assign("/carpenterants")} raised>More infos</mwc-button>
         </div>
         <div class="ant-card">
             <h2>Fire Ants</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero. Culpa ut sit ipsam aspernatur.</p>
             <br/>
             <mwc-button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}} raised>Apply presets</mwc-button>
-            <mwc-button on:click= {() => window.location.assign("/fireAnts")} raised>More infos</mwc-button>
+            <mwc-button on:click= {() => window.location.assign("/fireants")} raised>More infos</mwc-button>
         </div>
         <ul>
             <input name="obstacleCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>
