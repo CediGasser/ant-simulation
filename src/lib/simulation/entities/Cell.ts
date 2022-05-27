@@ -34,7 +34,7 @@ export default class Cell extends BaseEntity {
                 this.setBrightnessValue(Colors.FIELD_COLOR[2])
             );
         } else {
-            p5.fill(Colors.PHEROMON_COLOR);
+            p5.fill(Colors.PHEROMONE_COLOR);
         }
         p5.square(this.position.x * this.size, this.position.y * this.size, this.size);
     }
@@ -113,7 +113,7 @@ export default class Cell extends BaseEntity {
     }
 
     private setBrightnessValue(brightness: number): number {
-        const valueInRange = Math.max(brightness - this.steps * 2, 20);
+        const valueInRange = Math.max(brightness - this.steps * 2, 30);
         if (valueInRange > brightness) {
             return brightness
         }
