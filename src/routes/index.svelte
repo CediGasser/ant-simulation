@@ -76,6 +76,8 @@
             <label for="foodCount"> Food: {Parameters.FOOD}</label>
             <input name="framerate" class="slider" type="range" bind:value={framerate} min="5" max="30" step="1"/>
             <label for="framerate"> Speed: {framerate}</label>
+            <input name="foodStock" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.FOOD_STOCK} min="1" max="100" step="1"/>
+            <label for="foodStock"> Food stock: {Parameters.FOOD_STOCK}</label>
         </ul>
     </section>
 </main>
