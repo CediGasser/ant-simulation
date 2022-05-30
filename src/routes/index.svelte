@@ -62,14 +62,14 @@
             <img class="ant-img" src={carpenterAntImg} alt="carpenter_ant">
             <mwc-button on:click={() => {Parameters.ANT_TYPE = 0; resetSimulation()}} raised>Apply carpenter ants
             </mwc-button>
-            <mwc-button on:click={() => goto("/carpenterants")} raised>More infos</mwc-button>
+            <mwc-button on:click={() => goto("/carpenterants")} raised>About</mwc-button>
         </div>
         <div class="ant-card">
             <h2 class="card-title">Fire Ants</h2>
             <img class="ant-img" src={fireAntImg} alt="fire_ant">
             <mwc-button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}} raised>Apply fire ants
             </mwc-button>
-            <mwc-button on:click={() => goto("/fireants")} raised>More infos</mwc-button>
+            <mwc-button on:click={() => goto("/fireants")} raised>About</mwc-button>
         </div>
         <ul>
             <input name="obstacleCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>
