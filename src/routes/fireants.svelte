@@ -7,6 +7,7 @@
     import Seo from "$lib/components/Seo.svelte";
     import '@material/mwc-button'
     import {goto} from '$app/navigation';
+    import fireAntImg from '$lib/assets/fire_ant.png';
 
 
 </script>
@@ -55,7 +56,7 @@
                 neighboring ant colonies merged into one big super-colonie. While still having their seperate anthills,
                 the colonies stay in close contact and organize thmeselves together.
             </p>
-            <img class="ant-image" src="src/assets/fire_ant.png">
+            <img class="ant-image" src={fireAntImg} alt="fire_ant">
         </div>
     </section>
 

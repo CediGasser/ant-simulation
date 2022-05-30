@@ -7,6 +7,7 @@
     import Seo from "$lib/components/Seo.svelte";
     import '@material/mwc-button'
     import {goto} from '$app/navigation';
+    import carpenterAntImg from '$lib/assets/carpenter_ant.png';
 
 </script>
 
@@ -31,7 +32,7 @@
             <p class="info-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique
                 omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero.
                 Culpa ut sit ipsam aspernatur.</p>
-            <img class="ant-image" src="src/assets/carpenter_ant.png">
+            <img class="ant-image" src={carpenterAntImg} alt="carpenter_ant">
         </div>
     </section>
 

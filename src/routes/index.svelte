@@ -9,6 +9,8 @@
     import '@material/mwc-button'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
     import { goto } from '$app/navigation';
+    import carpenterAntImg from '$lib/assets/carpenter_ant.png';
+    import fireAntImg from '$lib/assets/fire_ant.png';
 
 
     let running = true
@@ -57,14 +59,14 @@
 
         <div class="ant-card">
             <h2 class="card-title">Carpenter Ants</h2>
-            <img src="src/assets/carpenter_ant.png">
+            <img class="ant-img" src={carpenterAntImg} alt="carpenter_ant">
             <mwc-button on:click={() => {Parameters.ANT_TYPE = 0; resetSimulation()}} raised>Apply carpenter ants
             </mwc-button>
             <mwc-button on:click={() => goto("/carpenterants")} raised>More infos</mwc-button>
         </div>
         <div class="ant-card">
             <h2 class="card-title">Fire Ants</h2>
-            <img src="src/assets/fire_ant.png" alt="fire_ant">
+            <img class="ant-img" src={fireAntImg} alt="fire_ant">
             <mwc-button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}} raised>Apply fire ants
             </mwc-button>
             <mwc-button on:click={() => goto("/fireants")} raised>More infos</mwc-button>
@@ -87,7 +89,7 @@
 </main>
 <footer>
     <p>The sources of the texts written on the info pages, can be found in the documentation of the following <a
-            href="https://github.com/CediGasser/ant-simulation">GitHub Repo</a>.</p>
+            href="https://github.com/CediGasser/ant-simulation">GitHub repository</a>.</p>
 </footer>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
@@ -123,7 +125,7 @@
         padding: var(--space-m);
         margin: var(--space-m);
         min-width: 400px;
-        max-width: fit-content;
+        max-width: 600px;
         background-color: white;
     }
 
@@ -152,9 +154,16 @@
         text-align: center;
     }
     footer {
-        text-align: center;
+        position: relative;
+        padding: 10px 10px 0px 10px;
         bottom: 0;
-        position: absolute;
+        width: 100%;
+        /* Height of the footer*/
+        height: 40px;
+        text-align: center;
+    }
+
+    .ant-img {
         width: 100%;
     }
 </style>
