@@ -3,12 +3,12 @@
 </script>
 
 <script lang="ts">
-    import Simulation, { resetSimulation, setFramerate } from '$lib/components/Simulation.svelte'
+    import Simulation, {resetSimulation, setFramerate} from '$lib/components/Simulation.svelte'
     import PerformanceMeter from '$lib/components/PerformanceMeter.svelte'
     import Seo from '$lib/components/Seo.svelte'
     import '@material/mwc-button'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
-    import { goto } from '$app/navigation';
+    import {goto} from '$app/navigation';
 
 
     let running = true
@@ -17,7 +17,9 @@
     $: setFramerate(framerate)
 </script>
 
-<Seo title="Ant Simulation" keywords="Ants Simulation" type="Website" description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned." image="/social_preview.png"/>
+<Seo title="Ant Simulation" keywords="Ants Simulation" type="Website"
+     description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned."
+     image="/social_preview.png"/>
 
 <h1>Ant Simulation</h1>
 
@@ -40,38 +42,52 @@
 
         <div class="ant-card">
             <h2 class="card-title">Carpenter Ants</h2>
-            <mwc-button on:click={() => {Parameters.ANT_TYPE = 0; resetSimulation()}} raised>Apply carpenter ants</mwc-button>
-            <mwc-button on:click= {() => goto("/carpenterants")} raised>More infos</mwc-button>
+            <img src="src/assets/carpenter_ant.png">
+            <mwc-button on:click={() => {Parameters.ANT_TYPE = 0; resetSimulation()}} raised>Apply carpenter ants
+            </mwc-button>
+            <mwc-button on:click={() => goto("/carpenterants")} raised>More infos</mwc-button>
         </div>
         <div class="ant-card">
             <h2 class="card-title">Fire Ants</h2>
-            <mwc-button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}} raised>Apply fire ants</mwc-button>
-            <mwc-button on:click= {() => goto("/fireants")} raised>More infos</mwc-button>
+            <img src="src/assets/fire_ant.png" alt="fire_ant">
+            <mwc-button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}} raised>Apply fire ants
+            </mwc-button>
+            <mwc-button on:click={() => goto("/fireants")} raised>More infos</mwc-button>
         </div>
         <ul>
-            <input name="obstacleCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>
+            <input name="obstacleCount" class="slider" on:change={resetSimulation} type="range"
+                   bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>
             <label for="obstacleCount"> Obstacle Count: {Parameters.OBSTACLE_COUNT}</label><br/>
-            <input name="obstacleSize" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_SIZE} min="1" max="6" step="1"/>
+            <input name="obstacleSize" class="slider" on:change={resetSimulation} type="range"
+                   bind:value={Parameters.OBSTACLE_SIZE} min="1" max="6" step="1"/>
             <label for="obstacleSize"> Obstacle Size: {Parameters.OBSTACLE_SIZE}</label><br/>
-            <input name="antsCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.ANTS} min="5" max="40" step="1"/>
+            <input name="antsCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.ANTS}
+                   min="5" max="40" step="1"/>
             <label for="antsCount"> Ants: {Parameters.ANTS}</label><br/>
-            <input name="foodCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.FOOD} min="1" max="80" step="1"/>
+            <input name="foodCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.FOOD}
+                   min="1" max="80" step="1"/>
             <label for="foodCount"> Food: {Parameters.FOOD}</label>
             <input name="framerate" class="slider" type="range" bind:value={framerate} min="5" max="30" step="1"/>
             <label for="framerate"> Speed: {framerate}</label>
         </ul>
     </section>
 </main>
-
+<footer>
+    <p>The sources of the texts written on the info pages, can be found in the documentation of the following <a
+            href="https://github.com/CediGasser/ant-simulation">GitHub Repo</a>.</p>
+</footer>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
     * {
         font-family: Nunito, Roboto, system-ui, sans-serif;
     }
+
     :global(body) {
         padding: var(--space-m);
         margin: 0;
     }
+
     :global(html) {
         background-color: var(--c-background);
     }
@@ -81,6 +97,7 @@
         flex-wrap: wrap;
 
     }
+
     .controls {
         display: flex;
         justify-content: space-around;
@@ -94,6 +111,7 @@
         margin: var(--space-m);
         min-width: 400px;
         max-width: fit-content;
+        background-color: white;
     }
 
     .slider {
@@ -107,6 +125,7 @@
         -webkit-transition: opacity .15s ease-in-out;
         transition: opacity .15s ease-in-out;
     }
+
     .slider:hover {
         opacity: 1; /* Fully shown on mouse-over */
     }
@@ -118,5 +137,11 @@
 
     .card-title {
         text-align: center;
+    }
+    footer {
+        text-align: center;
+        bottom: 0;
+        position: absolute;
+        width: 100%;
     }
 </style>

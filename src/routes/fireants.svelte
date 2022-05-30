@@ -20,16 +20,15 @@
 <main>
     <div style="margin: auto;">
         <br/>
-        <mwc-button style="padding-right: 20px;" on:click={() => window.location.assign("/")} raised>Back to ant
-            simulation
-        </mwc-button>
+        <mwc-button style="padding-right: 20px;" on:click={() => goto("/")} raised>Back to the ant simulation</mwc-button>
         <mwc-button on:click={() => goto("/carpenterants")} raised>Carpenter ants</mwc-button>
     </div>
     <section aria-label="Ant Descriptions">
         <br/>
         <div class="ant-card">
             <h2>Fire Ants</h2>
-            <p>The fire ant (genus Solenopsis) is red and black colored and from 1.6 to about 5mm long. The species is
+            <p class="info-text">The fire ant (genus Solenopsis) is red and black colored and from 1.6 to about 5mm
+                long. The species is
                 originally found in the tropical regions Central and South America. In 1920 a descendent was created:
                 The red imported fire ant was imported into the USA and spread since then to a few other countrys such
                 as Australia, China and Taiwan. This succesful diffusion is not least because of their aggresiv
@@ -56,7 +55,7 @@
                 neighboring ant colonies merged into one big super-colonie. While still having their seperate anthills,
                 the colonies stay in close contact and organize thmeselves together.
             </p>
-
+            <img class="ant-image" src="src/assets/fire_ant.png">
         </div>
     </section>
 
@@ -92,5 +91,15 @@
         min-width: 400px;
         max-width: 90%;
         margin: auto;
+        background-color: white;
     }
+
+    .info-text {
+        font-size: 20pt;
+    }
+
+    .ant-image {
+        margin: auto;
+    }
+
 </style>
