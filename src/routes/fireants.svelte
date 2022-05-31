@@ -27,34 +27,19 @@
     <section aria-label="Ant Descriptions">
         <br/>
         <div class="ant-card">
-            <h2>Fire Ants</h2>
-            <p class="info-text">The fire ant (genus Solenopsis) is red and black colored and from 1.6 to about 5mm
-                long. The species is
-                originally found in the tropical regions Central and South America. In 1920 a descendent was created:
-                The red imported fire ant was imported into the USA and spread since then to a few other countrys such
-                as Australia, China and Taiwan. This succesful diffusion is not least because of their aggresiv
-                behaviour against threatening animals, wihch also earnd them their scientific name Solenopsis invicta
-                (the undefeated fire ant). Red fire ants biuld earthy anthills under which underground constructions are
-                found. The hills can reach up to one meter in height aswell as in width. They like warm and wet climate,
-                which is why their nests are often found near rivers, lakes or watered grasslands.
-                The red imported fire ant is especially aggresiv reagarding other ant species. Therefor, the ant has the
-                potential to endanger the indigenous environment, because they often allmost exterminate nativ ant
-                species. But not only the Fauna suffers under them, they also destroy the Flora and no one can stop them
-                because of the dominance over their competitors. Additionally, they have a penchant for electric
-                devices, which makes them a very annoying vermin in the garden.
-                If attacking, the ant bites the pray with the jaw and afterwards injects poison with its sting, located
-                at the abdomen. The ant will launch several attacks within a short period of time. If confronted with
-                only one ant, the attack is only dangerous for people with allergic reactions. Its something else
-                entirely if a colonie feals thretened, and hundrets of ants are attaking. The consequences of those
-                encounters are severe burnings and possibly fatal shock reactions.
-                The communication between the ants, as in most ant colonies, is primarely based on odorous substances,
-                the so called pheromones. Additonallly, they have the ability to communticate through knocking with
-                their legs or stridulation. Stridulation is a form of communication, wihch belongs to the insects, where
-                two bodyparts are robed against each other and thereby a sound is created. Those two however have a very
-                limited range of a few centimeters.
-                A very rare attribute of the fire ant, which has been observed in Texas USA, is a super-colonie: A few
-                neighboring ant colonies merged into one big super-colonie. While still having their seperate anthills,
-                the colonies stay in close contact and organize thmeselves together.
+            <h2>Fire Ants (Solenopsis Invicta)</h2>
+            <p class="info-text">The fire ant is originally found in the tropical regions of Central and South America. But in the 20th
+                century, it was imported into the USA. The sub-specie the red imported fire ant was created and
+                since then spread to a few other countries such as Australia, China, and Taiwan. The small red ant
+                dominated their competitors in their new habitats. That triumph over other ant species is not least
+                because of their extremely aggressive behavior and their destructive attack, which is composed of a
+                bite and a poisonous injection into the bite wound from their sting. This also earned them their
+                scientific name Solenopsis Invicta (the undefeated fire ant). Red fire ants build earthy ant hills under
+                which underground constructions are found. The hills can reach up to one meter in height as well as
+                in width. The nutrition of the fire ant comprises almost all other insects, as well as seeds, fruits and
+                some plants. Besides that the fire ant often almost exterminates other ant species, it also damages
+                agriculture. Additionally, they have a penchant for electric devices, which makes them a very
+                annoying vermin.
             </p>
             <img class="ant-image" src={fireAntImg} alt="fire_ant">
         </div>

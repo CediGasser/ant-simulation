@@ -28,10 +28,16 @@
 
         <br/>
         <div class="ant-card">
-            <h2>Carpenter Ants</h2>
-            <p class="info-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat fugiat ex similique
-                omnis praesentium fuga, repellendus impedit neque voluptatum cumque suscipit sed ducimus unde vero.
-                Culpa ut sit ipsam aspernatur.</p>
+            <h2>Carpenter Ants (Lasius Fuliginosus)</h2>
+            <p class="info-text">Carpenter ants are found in Europe and Asia. One colony can have up to two million ants and has
+                always more than one Queen, except at the beginning of a new colony.
+                They don’t have ant hills, but build their comb-like nests inside of deadwood. The ants gnaw
+                passageways into the wood and build their nest within those passageways with a substance, mostly
+                made out of wood and sugar. To reinforce their nest, they breed a certain mushroom inside the nest.
+                Their nutrition consists mainly of a honey-like substance, which the ants collect from aphid colonies.
+                If necessary, they supplement their nutrition with insects.
+                Because carpenter ants need deadwood and therefore also infest construction wood of buildings,
+                they are considered to be vermin.</p>
             <img class="ant-image" src={carpenterAntImg} alt="carpenter_ant">
         </div>
     </section>
