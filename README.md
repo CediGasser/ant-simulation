@@ -1,5 +1,5 @@
 # Ant Simulations!
-This Project is currently being developed. It should evolve to be a website, with an interactive ant simulation. In addition there will be a documentation about ants and their adaptability, about the technical implementation and about the observations made on the simulation.
+This is a school project, displaying ants and their gathering of food.
 
 ## Developing
 
@@ -11,7 +11,9 @@ npm run dev
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
+Note that [Node.js](https://nodejs.org/en/) has to be installed.
+
 
 ## Deployment
 
-This repository is set up to automaticaly deploy any commits on the master branch to the server. So just code something that works, `git commit -am 'commit message'` and then `git push`.
+This repository is set up to automaticaly deploy any commits on the master branch to the server. So if you have the access rights, just code something that works, `git commit -am 'commit message'` and then `git push`.
