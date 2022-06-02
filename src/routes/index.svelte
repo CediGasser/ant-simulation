@@ -71,20 +71,20 @@
             </mwc-button>
             <mwc-button on:click={() => goto("/fireants")} raised>About</mwc-button>
         </div>
-        <ul>
-            <input name="obstacleCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>
-            <label for="obstacleCount"> Obstacle Count: {Parameters.OBSTACLE_COUNT}</label><br/>
-            <input name="obstacleSize" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_SIZE} min="1" max="6" step="1"/>
-            <label for="obstacleSize"> Obstacle Size: {Parameters.OBSTACLE_SIZE}</label><br/>
-            <input name="antsCount" class="slider" on:change={resetSimulation} type="range" bind:value={antSlider} min="0" max="100" step="1"/>
-            <label for="antsCount"> Ants: {Parameters.ANTS}</label><br/>
-            <input name="foodCount" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.FOOD} min="1" max="80" step="1"/>
-            <label for="foodCount"> Food: {Parameters.FOOD}</label>
-            <input name="framerate" class="slider" type="range" bind:value={framerate} min="5" max="30" step="1"/>
-            <label for="framerate"> Speed: {framerate}</label>
-            <input name="foodStock" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.FOOD_STOCK} min="1" max="100" step="1"/>
-            <label for="foodStock"> Food stock: {Parameters.FOOD_STOCK}</label>
-        </ul>
+        <form>
+            <input id="obstacleCountSlider" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>
+            <label for="obstacleCountSlider"> Obstacle Count: {Parameters.OBSTACLE_COUNT}</label><br/>
+            <input id="obstacleSizeSlider" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_SIZE} min="1" max="6" step="1"/>
+            <label for="obstacleSizeSlider"> Obstacle Size: {Parameters.OBSTACLE_SIZE}</label><br/>
+            <input id="antsCountSlider" class="slider" on:change={resetSimulation} type="range" bind:value={antSlider} min="0" max="100" step="1"/>
+            <label for="antsCountSlider"> Ants: {Parameters.ANTS}</label><br/>
+            <input id="foodCountSlider" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.FOOD} min="1" max="80" step="1"/>
+            <label for="foodCountSlider"> Food: {Parameters.FOOD}</label>
+            <input id="framerateSlider" class="slider" type="range" bind:value={framerate} min="5" max="30" step="1"/>
+            <label for="framerateSlider"> Speed: {framerate}</label>
+            <input id="foodStockSlider" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.FOOD_STOCK} min="1" max="100" step="1"/>
+            <label for="foodStockSlider"> Food stock: {Parameters.FOOD_STOCK}</label>
+        </form>
     </section>
 </main>
 <footer>
