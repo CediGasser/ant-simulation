@@ -7,14 +7,13 @@
     import Seo from "$lib/components/Seo.svelte";
     import '@material/mwc-button'
     import {goto} from '$app/navigation';
-    import carpenterAntImg from '$lib/assets/carpenter_ant.png';
 
 </script>
 
 
 <Seo title="Carpenter Ants" keywords="Ants Simulation" type="Website"
      description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned."
-     image="/social_preview.png"/>
+     image="/carpenter_ant_512.png"/>
 
 <main>
 
@@ -38,7 +37,10 @@
                 If necessary, they supplement their nutrition with insects.
                 Because carpenter ants need deadwood and therefore also infest construction wood of buildings,
                 they are considered to be vermin.</p>
-            <img class="ant-image" src={carpenterAntImg} alt="carpenter_ant">
+                <picture>
+                    <source srcset="carpenter_ant_512.png 1x, carpenter_ant_1024.png 2x, carpenter_ant.png 3x">
+                    <img class="ant-image" src="carpenter_ant.png" alt="carpenter_ant" width="500" height="500">
+                </picture>
         </div>
     </section>
 

@@ -7,15 +7,13 @@
     import Seo from "$lib/components/Seo.svelte";
     import '@material/mwc-button'
     import {goto} from '$app/navigation';
-    import fireAntImg from '$lib/assets/fire_ant.png';
-
 
 </script>
 
 
 <Seo title="Fire Ants" keywords="Ants Simulation" type="Website"
      description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned."
-     image="/social_preview.png"/>
+     image="/fire_ant_512.png"/>
 
 
 <main>
@@ -41,7 +39,10 @@
                 agriculture. Additionally, they have a penchant for electric devices, which makes them a very
                 annoying vermin.
             </p>
-            <img class="ant-image" src={fireAntImg} alt="fire_ant">
+            <picture>
+                <source srcset="fire_ant_512.png 1x, fire_ant_1024.png 2x, fire_ant.png 3x">
+                <img class="ant-image" src="fire_ant.png" alt="fire_ant" width="500" height="500">
+            </picture>
         </div>
     </section>
 
