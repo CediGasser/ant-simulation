@@ -1,5 +1,5 @@
 <script context="module">
-    export const prerender = true;
+    export const ssr = false;
 </script>
 
 <script lang="ts">
@@ -8,7 +8,8 @@
     import Seo from '$lib/components/Seo.svelte'
     import '@material/mwc-button'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
-    import { goto } from '$app/navigation';
+    import { goto } from '$app/navigation'
+    import { BrowserRender } from '@svelteuidev/core';
 
 
     let running = true
@@ -40,7 +41,9 @@
 
 <main>
     <section aria-label="Simulation">
-        <Simulation {running}/>
+        <BrowserRender>
+            <Simulation {running}/>
+        </BrowserRender>
         <div class="controls">
             <mwc-button raised on:click={()=>running = !running}>
                 {#if running}
