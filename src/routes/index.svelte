@@ -1,15 +1,10 @@
-<script context="module">
-    export const ssr = false;
-</script>
-
 <script lang="ts">
     import Simulation, { resetSimulation, setFramerate } from '$lib/components/Simulation.svelte'
     import PerformanceMeter from '$lib/components/PerformanceMeter.svelte'
     import Seo from '$lib/components/Seo.svelte'
-    import '@material/mwc-button'
+    import { Button } from '@svelteuidev/core'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
     import { goto } from '$app/navigation'
-    import { BrowserRender } from '@svelteuidev/core';
 
 
     let running = true
@@ -24,7 +19,7 @@
         var minp = 0;
         var maxp = 100;
 
-        // The result should be between 100 an 10000000
+        // The result should be between 5 an 2000
         var minv = Math.log(5);
         var maxv = Math.log(2000);
 
@@ -41,18 +36,16 @@
 
 <main>
     <section aria-label="Simulation">
-        <BrowserRender>
-            <Simulation {running}/>
-        </BrowserRender>
+        <Simulation {running}/>
         <div class="controls">
-            <mwc-button raised on:click={()=>running = !running}>
+            <Button variant="filled" on:click={()=>running = !running}>
                 {#if running}
                     Pause
                 {:else}
                     Play
                 {/if}
-            </mwc-button>
-            <mwc-button outlined on:click={resetSimulation}>Reset</mwc-button>
+            </Button>
+            <Button variant="outline" on:click={resetSimulation}>Reset</Button>
             <PerformanceMeter/>
         </div>
     </section>
@@ -64,9 +57,9 @@
                 <source srcset="carpenter_ant_512.png 1x, carpenter_ant_1024.png 2x, carpenter_ant.png 3x">
                 <img class="ant-img" src="carpenter_ant.png" alt="carpenter_ant" width="500" height="500">
             </picture>
-            <mwc-button on:click={() => {Parameters.ANT_TYPE = 0; resetSimulation()}} raised>Apply carpenter ants
-            </mwc-button>
-            <mwc-button on:click={() => goto("/carpenterants")} raised>About</mwc-button>
+            <Button on:click={() => {Parameters.ANT_TYPE = 0; resetSimulation()}} variant="filled">Apply carpenter ants
+            </Button>
+            <Button on:click={() => goto("/carpenterants")} variant="filled">About</Button>
         </div>
         <div class="ant-card">
             <h2 class="card-title">Fire Ants</h2>
@@ -74,9 +67,9 @@
                 <source srcset="fire_ant_512.png 1x, fire_ant_1024.png 2x, fire_ant.png 3x">
                 <img class="ant-img" src="fire_ant.png" alt="fire_ant" width="500" height="500">
             </picture>
-            <mwc-button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}} raised>Apply fire ants
-            </mwc-button>
-            <mwc-button on:click={() => goto("/fireants")} raised>About</mwc-button>
+            <Button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}} variant="filled">Apply fire ants
+            </Button>
+            <Button on:click={() => goto("/fireants")} variant="filled">About</Button>
         </div>
         <form>
             <input id="obstacleCountSlider" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>

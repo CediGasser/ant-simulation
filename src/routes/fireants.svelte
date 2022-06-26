@@ -1,13 +1,7 @@
-<script context="module">
-    export const prerender = true;
-</script>
-
 <script lang="ts">
-
     import Seo from "$lib/components/Seo.svelte";
     import '@material/mwc-button'
-    import {goto} from '$app/navigation';
-
+    import { goto } from '$app/navigation';
 </script>
 
 

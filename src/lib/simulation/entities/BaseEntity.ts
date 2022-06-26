@@ -19,5 +19,4 @@ export default abstract class BaseEntity {
     abstract render(p5: p5): void
 
     abstract update(): void
-
 }

@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
-	import P5, { type Sketch } from 'p5-svelte'
-    import Simulation from '$lib/simulation/Simulation'
+	import type P5 from 'p5'
+	import type Simulation from '$lib/simulation/Simulation'
 
 	let simulation: Simulation
 
@@ -10,28 +10,39 @@
 
 <script lang="ts">
 	import Parameters from "../simulation/environment/SimulationParameters";
+	import { onMount } from 'svelte';
 
-	if (window.innerWidth < 500) {
-		Parameters.CELL_SIZE = 4
-	}
 	
+	
+	let p5Div: HTMLDivElement
+
 	export let running: boolean
 	
 	$: simulation?.setRunning(running)
 
-    const sketch: Sketch = (p5) => {
-		p5.setup = () => {
-			p5.createCanvas(Parameters.GRID_W * Parameters.CELL_SIZE, Parameters.GRID_H * Parameters.CELL_SIZE)
-            simulation = new Simulation(p5)
-		};
-		p5.draw = () => {
-            simulation.draw()
-		};
-	}
+	onMount(async () => {
+		let {default: p5} = await import('p5')
+		let Simulation = (await import('$lib/simulation/Simulation')).default
+
+		if (window.innerWidth < 500) {
+			Parameters.CELL_SIZE = 4
+		}
+
+		let sketch = (p5: P5) => {
+			p5.setup = () => {
+				p5.createCanvas(Parameters.GRID_W * Parameters.CELL_SIZE, Parameters.GRID_H * Parameters.CELL_SIZE)
+				simulation = new Simulation(p5)
+			};
+			p5.draw = () => {
+				simulation.draw()
+			};
+		}
+
+		new p5(sketch, p5Div)
+	})
 </script>
 
-<div>
-	<P5 {sketch}/>
+<div bind:this={p5Div}>
 </div>
 
 <style>
