@@ -1,6 +1,6 @@
 <script lang="ts">
     import Seo from "$lib/components/Seo.svelte";
-    import '@material/mwc-button'
+    import { Button } from '@svelteuidev/core'
     import { goto } from '$app/navigation';
 </script>
 
@@ -13,8 +13,8 @@
 
     <div style="margin: auto;">
         <br/>
-        <mwc-button style="padding-right: 20px;" on:click={() => goto("/")} raised>Back to the ant simulation</mwc-button>
-        <mwc-button on:click={() => goto("/fireants")} raised>Fire ants</mwc-button>
+        <Button style="padding-right: 20px;" on:click={() => goto("/")} raised>Back to the ant simulation</Button>
+        <Button on:click={() => goto("/fireants")} raised>Fire ants</Button>
     </div>
 
     <section aria-label="Ant Descriptions">

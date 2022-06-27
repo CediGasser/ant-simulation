@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import '@material/mwc-button'
+    import { Button } from '@svelteuidev/core'
 
     const times = []
     let fps;
@@ -19,4 +19,4 @@
     onMount(refreshLoop)
 </script>
 
-<mwc-button unelevated disabled>fps: {fps}</mwc-button>
+<Button variant="light" disabled>fps: {fps}</Button>
