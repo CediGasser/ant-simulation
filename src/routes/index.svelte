@@ -40,8 +40,6 @@
 
 <svelte:window on:keydown={handleKeydown}/>
 
-<h1>Ant Simulation</h1>
-
 <main>
     <section aria-label="Simulation">
         <Simulation {running}/>
@@ -95,10 +93,7 @@
         </form>
     </section>
 </main>
-<footer>
-    <p>The sources of the texts written on the info pages, can be found in the documentation of the following <a
-            href="https://github.com/CediGasser/ant-simulation">GitHub repository</a>.</p>
-</footer>
+
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
@@ -159,15 +154,6 @@
     }
 
     .card-title {
-        text-align: center;
-    }
-    footer {
-        position: relative;
-        padding: 10px 10px 0px 10px;
-        bottom: 0;
-        width: 100%;
-        /* Height of the footer*/
-        height: 40px;
         text-align: center;
     }
 </style>

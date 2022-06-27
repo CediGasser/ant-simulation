@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Seo from "$lib/components/Seo.svelte";
-    import { Button } from '@svelteuidev/core'
+    import Seo from '$lib/components/Seo.svelte'
+    import { Paper } from '@svelteuidev/core'
 </script>
 
 
@@ -8,14 +8,8 @@
      description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned."
      image="/carpenter_ant_512.png"/>
 
-<main>
 
-    <div style="margin: auto;">
-        <br/>
-        <Button href="/">Back to the ant simulation</Button>
-        <Button href="/fireants">Fire ants</Button>
-    </div>
-
+<Paper>
     <section aria-label="Ant Descriptions">
         <br/>
         <div class="ant-card">
@@ -36,7 +30,7 @@
         </div>
     </section>
 
-</main>
+</Paper>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
