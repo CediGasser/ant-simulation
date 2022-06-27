@@ -8,15 +8,13 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			fallback: 'index.html',
+			precompress: false
+		}),
 
 		prerender: {
 			default: true
-		},
-		vite: {
-			ssr: {
-				noExternal: ['p5']
-			}
 		}
 	}
 };
