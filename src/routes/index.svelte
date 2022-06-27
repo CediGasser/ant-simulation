@@ -4,8 +4,6 @@
     import Seo from '$lib/components/Seo.svelte'
     import { Button } from '@svelteuidev/core'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
-    import { goto } from '$app/navigation'
-
 
     let running = true
     let framerate = Parameters.FRAMERATE
@@ -16,21 +14,31 @@
 
     function exponential(position) {
         // position will be between 0 and 100
-        var minp = 0;
-        var maxp = 100;
+        var minp = 0
+        var maxp = 100
 
         // The result should be between 5 an 2000
-        var minv = Math.log(5);
-        var maxv = Math.log(2000);
+        var minv = Math.log(5)
+        var maxv = Math.log(2000)
 
         // calculate adjustment factor
-        var scale = (maxv-minv) / (maxp-minp);
+        var scale = (maxv-minv) / (maxp-minp)
 
-        return Number(Math.exp(minv + scale*(position-minp)).toFixed(0));
+        return Number(Math.exp(minv + scale*(position-minp)).toFixed(0))
     }
+
+    function handleKeydown(event) {
+        if (event.code === 'Space') {
+            running = !running
+            event.preventDefault()
+        }
+        console.log(event)
+	}
 </script>
 
 <Seo title="Ant Simulation" keywords="Ants Simulation" type="Website" description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned." image="/social_preview.png"/>
+
+<svelte:window on:keydown={handleKeydown}/>
 
 <h1>Ant Simulation</h1>
 
@@ -59,7 +67,7 @@
             </picture>
             <Button on:click={() => {Parameters.ANT_TYPE = 0; resetSimulation()}} variant="filled">Apply carpenter ants
             </Button>
-            <Button on:click={() => goto("/carpenterants")} variant="filled">About</Button>
+            <Button href="/carpenterants" variant="filled">About</Button>
         </div>
         <div class="ant-card">
             <h2 class="card-title">Fire Ants</h2>
@@ -69,7 +77,7 @@
             </picture>
             <Button on:click={() => {Parameters.ANT_TYPE = 1; resetSimulation()}} variant="filled">Apply fire ants
             </Button>
-            <Button on:click={() => goto("/fireants")} variant="filled">About</Button>
+            <Button href="/fireants" variant="filled">About</Button>
         </div>
         <form>
             <input id="obstacleCountSlider" class="slider" on:change={resetSimulation} type="range" bind:value={Parameters.OBSTACLE_COUNT} min="0" max="80" step="1"/>

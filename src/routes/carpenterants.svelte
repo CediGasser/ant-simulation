@@ -1,7 +1,6 @@
 <script lang="ts">
     import Seo from "$lib/components/Seo.svelte";
     import { Button } from '@svelteuidev/core'
-    import { goto } from '$app/navigation';
 </script>
 
 
@@ -13,12 +12,11 @@
 
     <div style="margin: auto;">
         <br/>
-        <Button style="padding-right: 20px;" on:click={() => goto("/")} raised>Back to the ant simulation</Button>
-        <Button on:click={() => goto("/fireants")} raised>Fire ants</Button>
+        <Button href="/">Back to the ant simulation</Button>
+        <Button href="/fireants">Fire ants</Button>
     </div>
 
     <section aria-label="Ant Descriptions">
-
         <br/>
         <div class="ant-card">
             <h2>Carpenter Ants (Lasius Fuliginosus)</h2>
