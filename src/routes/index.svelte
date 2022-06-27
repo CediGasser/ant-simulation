@@ -36,9 +36,14 @@
 	}
 </script>
 
-<Seo title="Ant Simulation" keywords="Ants Simulation" type="Website" description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned." image="/social_preview.png"/>
+<Seo title="Ant Simulation" 
+     keywords="Ants Simulation" 
+     type="Website" 
+     description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned." 
+     image="/social_preview.png"/>
 
 <svelte:window on:keydown={handleKeydown}/>
+
 
 <h1>Ant Simulation</h1>
 

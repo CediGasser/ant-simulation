@@ -4,7 +4,9 @@
 </script>
 
 
-<Seo title="Fire Ants" keywords="Ants Simulation" type="Website"
+<Seo title="Fire Ants" 
+     keywords="Ants Simulation" 
+     type="Website"
      description="An interactive ant simulation. Thats realy about it. Oh, and we also made a paper about the stuff we learned."
      image="/fire_ant_512.png"/>
 
