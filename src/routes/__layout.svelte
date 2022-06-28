@@ -1,6 +1,7 @@
 <script>
     import { page } from '$app/stores';
-    import { SvelteUIProvider, fns, AppShell, Navbar, Header, Footer, ShellSection, Burger, Group, Button, Stack, ActionIcon } from '@svelteuidev/core';
+    import { SvelteUIProvider, fns, AppShell, Navbar, Header, Footer, ShellSection, Burger, Group, Button, Stack, ActionIcon, Center } from '@svelteuidev/core';
+    import { GithubLogo } from 'radix-icons-svelte'
 
     let opened = false
 </script>
@@ -11,56 +12,35 @@
             main: { 'dark-theme &': { bc: fns.themeColor('dark', 8) }, bc: fns.themeColor('gray', 0) }
         }}
         fixed
-        navbarOffsetBreakpoint="sm"
-    >
-        <Header fixed slot="header" height={60} override={{ p: '$mdPX' }}>
+        navbarOffsetBreakpoint="sm">
+
+        <Header slot="header" override={{ p: '$mdPX' }}>
             <Group position="apart">
-                <Group spacing="sm">
-                    <Burger 
-                        opened={opened}
-                        on:click={()=>opened = !opened}
-                        aria-label="Open navigation"/>
-                    <h1>Ant Simulation</h1>
+
+                <h1>Ant Simulation</h1>
+
+                <Group spacing="xs">
+                    <Button href="/" variant={$page.url.pathname === '/' ? 'light' : 'subtle'}>Simulation</Button>
+                    <Button href="/carpenterants" variant={$page.url.pathname === '/carpenterants' ? 'light' : 'subtle'}>Carpenter ants</Button>
+                    <Button href="/fireants" variant={$page.url.pathname === '/fireants' ? 'light' : 'subtle'}>Fire ants</Button>
                 </Group>
-                <nav>
-                    <Group spacing="xs">
-                        <Button href="/" variant={$page.url.pathname === '/' ? 'light' : 'subtle'}>Simulation</Button>
-                        <Button href="/carpenterants" variant={$page.url.pathname === '/carpenterants' ? 'light' : 'subtle'}>Carpenter ants</Button>
-                        <Button href="/fireants" variant={$page.url.pathname === '/fireants' ? 'light' : 'subtle'}>Fire ants</Button>
-                    </Group>
-                </nav>
-                <Group>
-                    <ActionIcon href="https://github.com/CediGasser/ant-simulation"/>
-                </Group>
+
+                <ActionIcon title="Code on Github" size="xl" radius="xl" href="https://github.com/CediGasser/ant-simulation" root="a" color="blue">
+                    <GithubLogo size={32}/>
+                </ActionIcon>
             </Group>
-            
         </Header>
 
         <!-- Main content uses the default slot, so no need to explicitly declare it -->
-        <ShellSection>
+        <ShellSection override={{ p: '$mdPX' }}>
             <slot />
         </ShellSection>
 
         <Footer slot="footer">
-            <footer>
+            <Center>
                 <p>The sources of the texts written on the info pages can be found in the documentation of the following 
                 <a href="https://github.com/CediGasser/ant-simulation">GitHub repository</a>.</p>
-            </footer>
+            </Center>
         </Footer>
     </AppShell>
 </SvelteUIProvider>
-
-<style>
-    footer {
-        position: relative;
-        padding: 10px 10px 0px 10px;
-        bottom: 0;
-        width: 100%;
-        /* Height of the footer*/
-        height: 40px;
-        text-align: center;
-    }
-    nav {
-        display: flex;
-    }
-</style>

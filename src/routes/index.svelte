@@ -2,7 +2,7 @@
     import Simulation, { resetSimulation, setFramerate } from '$lib/components/Simulation.svelte'
     import PerformanceMeter from '$lib/components/PerformanceMeter.svelte'
     import Seo from '$lib/components/Seo.svelte'
-    import { Button } from '@svelteuidev/core'
+    import { Button, Group } from '@svelteuidev/core'
     import Parameters from '$lib/simulation/environment/SimulationParameters'
 
     let running = true
@@ -43,17 +43,17 @@
 <main>
     <section aria-label="Simulation">
         <Simulation {running}/>
-        <div class="controls">
+        <Group align="stretch">
             <Button variant="filled" on:click={()=>running = !running}>
                 {#if running}
-                    Pause
+                Pause
                 {:else}
-                    Play
+                Play
                 {/if}
             </Button>
             <Button variant="outline" on:click={resetSimulation}>Reset</Button>
             <PerformanceMeter/>
-        </div>
+        </Group>
     </section>
     <section aria-label="Ant Descriptions">
 
@@ -114,12 +114,6 @@
         display: flex;
         flex-wrap: wrap;
 
-    }
-
-    .controls {
-        display: flex;
-        justify-content: space-around;
-        max-width: 1050px;
     }
 
     .ant-card {
