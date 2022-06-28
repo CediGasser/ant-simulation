@@ -52,12 +52,6 @@
         background-color: var(--c-background);
     }
 
-    main {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-
     .ant-card {
         box-shadow: var(--shadow);
         border-radius: var(--radius);

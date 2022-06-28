@@ -1,5 +1,6 @@
 <script>
-    import { SvelteUIProvider, fns, AppShell, Navbar, Header, Footer, ShellSection, Burger, Group, Button, Stack } from '@svelteuidev/core';
+    import { page } from '$app/stores';
+    import { SvelteUIProvider, fns, AppShell, Navbar, Header, Footer, ShellSection, Burger, Group, Button, Stack, ActionIcon } from '@svelteuidev/core';
 
     let opened = false
 </script>
@@ -12,29 +13,27 @@
         fixed
         navbarOffsetBreakpoint="sm"
     >
-        <Navbar
-            slot="navbar"
-            hidden={!opened}
-            fixed
-            hiddenBreakpoint="sm"
-            width={{ sm: 200, lg: 250 }}
-            override={{ p: '$mdPX' }}
-        >
-            <Stack>
-                <Button href="/">Simulation</Button>
-                <Button href="/carpenterants" variant="outline">Carpenter ants</Button>
-                <Button href="/fireants" variant="outline">Fire ants</Button>
-            </Stack>
-        </Navbar>
-
         <Header fixed slot="header" height={60} override={{ p: '$mdPX' }}>
-            <Group spacing="sm">
-                <Burger 
-                    opened={opened}
-                    on:click={()=>opened = !opened}
-                    aria-label="Open navigation"/>
-                <h1>Ant Simulation</h1>
+            <Group position="apart">
+                <Group spacing="sm">
+                    <Burger 
+                        opened={opened}
+                        on:click={()=>opened = !opened}
+                        aria-label="Open navigation"/>
+                    <h1>Ant Simulation</h1>
+                </Group>
+                <nav>
+                    <Group spacing="xs">
+                        <Button href="/" variant={$page.url.pathname === '/' ? 'light' : 'subtle'}>Simulation</Button>
+                        <Button href="/carpenterants" variant={$page.url.pathname === '/carpenterants' ? 'light' : 'subtle'}>Carpenter ants</Button>
+                        <Button href="/fireants" variant={$page.url.pathname === '/fireants' ? 'light' : 'subtle'}>Fire ants</Button>
+                    </Group>
+                </nav>
+                <Group>
+                    <ActionIcon href="https://github.com/CediGasser/ant-simulation"/>
+                </Group>
             </Group>
+            
         </Header>
 
         <!-- Main content uses the default slot, so no need to explicitly declare it -->
@@ -60,5 +59,8 @@
         /* Height of the footer*/
         height: 40px;
         text-align: center;
+    }
+    nav {
+        display: flex;
     }
 </style>
