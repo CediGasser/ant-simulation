@@ -1,6 +1,6 @@
 <script lang="ts">
-    import Seo from "$lib/components/Seo.svelte";
-    import { Button } from '@svelteuidev/core'
+    import Seo from '$lib/components/Seo.svelte'
+    import { Paper } from '@svelteuidev/core'
 </script>
 
 
@@ -11,13 +11,7 @@
      image="/fire_ant_512.png"/>
 
 
-<main>
-    <div style="margin: auto;">
-        <br/>
-        <Button href="/">Back to the ant simulation</Button>
-        <Button href="/carpenterants">Carpenter ants</Button>
-    </div>
-    
+<Paper>
     <section aria-label="Ant Descriptions">
         <br/>
         <div class="ant-card">
@@ -42,7 +36,7 @@
         </div>
     </section>
 
-</main>
+</Paper>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
@@ -59,12 +53,6 @@
     :global(html) {
         background-color: var(--c-background);
     }
-
-    main {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
 
     .ant-card {
         box-shadow: var(--shadow);

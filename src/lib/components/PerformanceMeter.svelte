@@ -19,4 +19,4 @@
     onMount(refreshLoop)
 </script>
 
-<Button variant="light" disabled>fps: {fps}</Button>
+<Button variant="outline" disabled>fps: {fps}</Button>
