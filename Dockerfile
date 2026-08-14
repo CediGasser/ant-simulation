@@ -1,8 +1,10 @@
-FROM node:alpine as builder
+FROM node:24-alpine AS builder
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --ignore-scripts
 COPY ./ ./
-RUN npm install
 RUN npm run build
 
-FROM nginx
-COPY --from=builder ./build /usr/share/nginx/html/
-COPY --from=builder ./nginx/custom.conf /etc/nginx/conf.d
+FROM nginx:alpine
+COPY --from=builder /app/build /usr/share/nginx/html/
+COPY --from=builder /app/nginx/custom.conf /etc/nginx/conf.d/
